@@ -1,6 +1,6 @@
 # The Zen of Python
 ```txt
-Beautiful is better than ugley.
+Beautiful is better than ugly.
 Eksplicit is beter than implisit.
 Simpl is beter than complex.
 Compleks is beter than komplicated.
