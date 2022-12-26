@@ -32,20 +32,20 @@ class Board:
 
 
 class Snake:
-    def __init__(self, head="@", init_body="o", init_direction=(1, 0), init_position=(1, 1)):
-        self.direction = init_direction
-        self.body = init_body
-        self.position = init_position
+    def __init__(self, symbol="o", position=(1, 1), head="@"):
+        # self.position = None
+        self.symbol = symbol
+        self.body = [position]
         self.head = head
+        # self.head = self.body[-1]
 
-    # def head(self):
-    #     return self.body[-1]
-
-    def eat(self, position):
-        self.position = position
-
-    def set_direction(self, direction):
-        self.direction = direction
+    def eat(self, position: tuple):
+        new_body = self.body[0][0] + position[0], self.body[0][1] + position[1]
+        self.body.append(new_body)
+    def move(self, position: tuple):
+        new_body = self.body[0][0] + position[0], self.body[0][1] + position[1]
+        self.body.insert(0, new_body)
+        self.body.pop(-1)
 
 
 class Food(object):
@@ -56,17 +56,21 @@ class Food(object):
 class Game:
     def __init__(self):
         self.board = Board(width=40, height=20)
-        self.init_body = [(2, 1), (3, 1), (4, 1), (5, 1)]
-        self.snake = Snake(init_body="o", init_direction=(1, 0))
-        self.food = Food(location=(10, 10))
+        self.snake = Snake()
 
     def render(self):
-        board = self.board
+        [(i, j)] = self.snake.body
+        self.board.board[i][j] = self.snake.symbol
+        self.board.show()
 
-
-#
 
 if __name__ == '__main__':
     b = Board(width=40, height=20)
-    s = Snake()
     b.show()
+    s = Snake()
+    s.eat((1, 2))
+    print(s.body)
+    # s.move((1, 3))
+    # print(s.body)
+    game = Game()
+    game.render()
