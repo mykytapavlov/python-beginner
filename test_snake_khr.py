@@ -1,3 +1,7 @@
+from time import sleep
+import os
+
+
 class Board:
     def __init__(self, width, height, top_border="<", bottom_border=">", vert_border="^"):
         self.top_boarders = top_border
@@ -32,49 +36,78 @@ class Board:
 
 
 class Snake:
-    def __init__(self, symbol="o", position=(1, 1), head="@", head_position=(2, 1)):
-        # self.position = None
+    def __init__(self, symbol="o", position=(1, 1)):
         self.symbol = symbol
         self.body = [position]
-        self.head = [head_position]
-        # self.head = self.body[-1]
 
     def eat(self, position: tuple):
-        new_body = self.body[0][0] + position[0], self.body[0][1] + position[1]
-        self.body.append(new_body)
+        self.body.append(position)
 
     def move(self, position: tuple):
-        new_body = self.body[0][0] + position[0], self.body[0][1] + position[1]
-        self.body.insert(0, new_body)
+        self.body.append(position)
         self.body.pop(-1)
 
 
-class Food(object):
+class Apple(object):
     def __init__(self, location):
         self.location = location
 
 
 class Game:
-    def __init__(self):
-        self.board = Board(width=40, height=20)
+    def __init__(self, width=40, height=20):
+        self.width = width
+        self.height = height
+        self.board = Board(self.width, self.height)
         self.snake = Snake()
 
+    def play(self):
+        self.clear()
+        apple = (1, 2)
+        self.snake.eat(apple)
+        apple = Apple(location=apple)
+        i, j = apple.location
+        self.board.board[i][j] = self.snake.symbol
+        self.render()
+        sleep(2)
+
+        self.clear()
+        apple = (2, 2)
+        self.snake.eat(apple)
+        apple = Apple(location=apple)
+        i, j = apple.location
+        self.board.board[i][j] = self.snake.symbol
+        self.render()
+        sleep(2)
+
+        self.clear()
+        apple = (2, 3)
+        self.snake.eat(apple)
+        apple = Apple(location=apple)
+        i, j = apple.location
+        self.board.board[i][j] = self.snake.symbol
+        self.render()
+        sleep(2)
+        self.clear()
+
+    def clear(self):
+        os.system('cls')
+
     def render(self):
-        [(i, j)] = self.snake.body
+        i, j = self.snake.body[0]
+        self.board.board[i][j] = self.snake.symbol
+        i, j = self.snake.body[1]
         self.board.board[i][j] = self.snake.symbol
         self.board.show()
-        [(x, y)] = self.snake.body
-        self.board.board[x][y] = self.snake.head
 
 
 if __name__ == '__main__':
     game = Game()
-    game.render()
-    # b = Board(width=40, height=20)
-    # b.show()
-    s = Snake()
-    # s.move((1, 3))
-    print(s.body)
-    print(s.head)
-    # s.eat((1, 2))
+    game.play()
+    # # b = Board(width=40, height=20)
+    # # b.show()
+    # s = Snake()
+    # # s.move((1, 3))
     # print(s.body)
+    # print(s.head)
+    # # s.eat((1, 2))
+    # # print(s.body)
