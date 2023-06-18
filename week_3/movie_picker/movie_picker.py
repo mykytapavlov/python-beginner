@@ -97,12 +97,7 @@ if search_by_genre.lower() == 'n':
                 movie = input("Enter movie: ")
             if movie in movies:
                 print("Movie to watch:", movie + ". Starring:", actor + ".")
-            else:
-                print("Movie not found.")
-        else:
-            print("No movies found for", actor)
-    else:
-        print("Invalid input. Please try again.")
+            
 
 
 
