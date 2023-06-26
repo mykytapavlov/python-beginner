@@ -10,22 +10,6 @@ if __name__ == '__main__':
         'action': ['Mission Impossible']
     }
 
-    # (!) ACTORS storage does not exist anymore.
-    # ACTORS = {
-    #     'Robert De Niro': ['Meet the Parents'],
-    #     'Ben Stiller': ['Meet the Parents'],
-    #     'Adam Sandler': ['Anger Management'],
-    #     'Jack Nicholson': ['Anger Management'],
-    #     'Brendan Fraser': ['Mummy'],
-    #     'Rachel Weisz': ['Mummy'],
-    #     'Tom Cruise': ['Vanilla Sky', 'Mission Impossible'],
-    #     'Penelope Cruz': ['Vanilla Sky'],
-    #     'Cameron Diaz': ['Vanilla Sky'],
-    #     'Brad Pitt': ['Meet Joe Black'],
-    #     'Anthony Hopkins': ['Meet Joe Black'],
-    #     'Jeremy Renner': ['Mission Impossible']
-    # }
-
     CAST = {
         'Meet the Parents': ['Robert De Niro', 'Ben Stiller'],
         'Anger Management': ['Adam Sandler', 'Jack Nicholson'],
@@ -83,7 +67,7 @@ if __name__ == '__main__':
         movie = input('Enter movie: ')
         search_movie(movie, search_genre(genre, age).values(), 'genre')
     elif search_by_genre == 'n':
-     search_by_actor = input('Search by Actor? y/n: ')
+        search_by_actor = input('Search by Actor? y/n: ')
     if search_by_genre == 'y':
         print('Available Actors:', available_actors)
         actor = input('Enter actor: ')
@@ -92,6 +76,3 @@ if __name__ == '__main__':
         search_movie(movie, search_actor(actor,available_actors).keys(), 'actor')
     else:
         print("Something went wrong. Try again")
-
-#Unfortunatly negative scenarios doesn't work. Need to cover cases when the user enter invalid data
-#filter by age doesn't work yet.
