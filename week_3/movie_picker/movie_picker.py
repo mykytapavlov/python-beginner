@@ -26,52 +26,38 @@ ACTORS = {
 }
 #Task 15.   Part 1. If statement.
 #search based on Genre
-key_genre = input('Search by Genre: ')
-if key_genre in GENRES.keys():
-    # ??? print('Available Genres: ', GENRES.keys())
-    print('Available Genres: ', ['comedy', 'adventures', 'romantic', 'drama', 'thriller', 'action'])
+search_genre = input('Search by Genre: ')
+if search_genre == 'y':
+    print('Available Genres:', list(GENRES.keys()))
+    key_genre = input('Enter Genre: ')
+    if key_genre in GENRES.keys():
+        available_movies_g = GENRES[key_genre]
+        print('Available Movies:', available_movies_g)
+        is_contain_movie = input('Enter movie: ')
+        if is_contain_movie in available_movies_g:
+            print('Movie to watch:', is_contain_movie + '.', 'Genre:', key_genre + '.')
+        else:
+            print('No results found')
+    else:
+        print('No results found')
+elif search_genre == 'n':
+    search_actor = input('Search by Actor: ')
+    if search_actor == 'y':
+        print('Available Actors:', list(ACTORS.keys()))
+        key_actor = input('Enter actor: ')
+        if key_actor in ACTORS.keys():
+            available_movies_a = ACTORS[key_actor]
+            print('Available movies:', available_movies_a, 'with', key_actor)
+            value_movie_watch = input('Enter movie: ')
+            if value_movie_watch in available_movies_a:
+                print('Movie to watch:', value_movie_watch + '.', 'Starring:', key_actor + '.')
+            else:
+                print('No results found')
+        else:
+            print('No results found')
+    else:
+        print('No results found')
 else:
     print('No results found')
 
-key_genre = input('Enter Genre: ')
-if key_genre in GENRES:
-    print('Available Movies: ', GENRES[key_genre])
-else:
-    print('No results found')
-
-value_movie = input('Enter movie: ')
-founding_genres = []
-for genres, movies in GENRES.items():
-    if value_movie in movies:
-        founding_genres.append(genres)
-#print(len(founding))
-if len(founding_genres) > 0:
-    print('Movie to watch: ', value_movie + '.', 'Genre: ', founding_genres)
-else:
-    print('No results found')
-
-#search based on Actor
-key_actor = input('Search by Actor: ')
-if key_actor in ACTORS.keys():
-    # ???  print('Available Actors: ', ACTORS.keys())
-    print('Available Actors: ', ['Robert De Niro', 'Ben Stiller', 'Adam Sandler', 'Jack Nicholson', 'Brendan Fraser',
-                                 'Rachel Weisz', 'Tom Cruise', 'Penelope Cruz', 'Cameron Diaz', 'Brad Pitt',
-                                 'Anthony Hopkins', 'Jeremy Renner'])
-else:
-    print('No results found')
-
-key_actor = input('Enter actor: ')
-if key_actor in ACTORS.keys():
-    print('Available movies: ', ACTORS[key_actor], 'with', key_actor)
-else:
-    print('No results found')
-
-value_movie_watch = input('Enter movie: ')
-founding_actors = []
-for key_actors, watch_movies in ACTORS.items():
-    if value_movie_watch in watch_movies:
-        founding_actors.append(key_actors)
-if len(founding_actors) > 0:
-    print('Movie to watch: ', value_movie_watch + '.', 'Starring: ', founding_actors)
-else:
-    print('No results found')
+#READY
