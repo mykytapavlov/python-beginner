@@ -9,7 +9,6 @@ GENRES = {
     'action': ['Mission Impossible']
 }
 
-
 #ACTORS = {
 #    'Robert De Niro': ['Meet the Parents'],
 #    'Ben Stiller': ['Meet the Parents'],
@@ -34,38 +33,39 @@ CAST = {
     'Mission Impossible': ['Tom Cruise', 'Jeremy Renner']
 }
 
-#Task 16. Part 2. For loop.
-#search based on Genre
+list_all_actors = list(set([item for sublist in [*CAST.values()] for item in sublist]))
+
+#Task Task 17. Part 3. While loop.
+
 search_genre = input('Search by Genre: ')
 if search_genre == 'y':
     print('Available Genres:', list(GENRES.keys()))
     key_genre = input('Enter Genre: ')
-    if key_genre in GENRES.keys():
-        available_movies_g = GENRES[key_genre]
-        print('Available Movies:', available_movies_g)
+    while key_genre not in GENRES.keys():
+        print('Genre', key_genre, 'not found. Please try again.')
+        key_genre = input('Enter Genre: ')
+    available_movies_g = GENRES[key_genre]
+    print('Available Movies:', available_movies_g)
+    is_contain_movie = input('Enter movie: ')
+    while is_contain_movie not in available_movies_g:
+        print('Movie', is_contain_movie, 'not found. Please try again.')
         is_contain_movie = input('Enter movie: ')
-        if is_contain_movie in available_movies_g:
-            print('Movie to watch:', is_contain_movie + '.', 'Genre:', key_genre + '.')
-        else:
-            print('No results found')
-    else:
-        print('No results found')
+    print('Movie to watch:', is_contain_movie + '.', 'Genre:', key_genre + '.')
 elif search_genre == 'n':
     search_actor = input('Search by Actor: ')
     if search_actor == 'y':
-        list_actors = list(set([item for sublist in [*CAST.values()] for item in sublist]))
-        print('Available Actors:', list_actors)
+        print('Available Actors:', list_all_actors)
         key_actor = input('Enter actor: ')
-        if key_actor in list_actors:
-            actors_movies = [key for key, val in CAST.items() if key_actor in val]
-            print('Available movies:', actors_movies, 'with', key_actor)
+        while key_actor not in list_all_actors:
+            print('Actor', key_actor, 'not found. Please try again.')
+            key_actor = input('Enter actor: ')
+        actors_movies = [key for key, val in CAST.items() if key_actor in val]
+        print('Available movies:', actors_movies, 'with', key_actor)
+        movie_watch = input('Enter movie: ')
+        while movie_watch not in actors_movies:
+            print('Movie', movie_watch, 'with actor', key_actor, 'not found. Please try again.')
             movie_watch = input('Enter movie: ')
-            if movie_watch in actors_movies:
-                print('Movie to watch:', movie_watch + '.', 'Starring:', key_actor + '.')
-            else:
-                print('No results found')
-        else:
-            print('No results found')
+        print('Movie to watch:', movie_watch + '.', 'Starring:', key_actor + '.')
     else:
         print('No results found')
 else:
