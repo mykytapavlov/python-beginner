@@ -16,10 +16,35 @@ class ContactList:
         self.storage = []
         self.index = 0
 
+    def append(self, contact):
+        if not isinstance(contact, Contact):
+            raise ValueError('Invalid contact!')
+        print(f'Save contact {contact} to the storage')
+        self.storage.append(contact)
+
+    def __str__(self):
+        print(f'Contact stored: {len(self.storage)}')
+        print('-' * 10)
+        for contact in self.storage:
+            print(contact)
+        print('-' * 10)
+
     # Remember I told, that if you want to print your custom class nicely,
     # you need to defined __str__ method and tell python what to print exactly.
 
     # Read this section: https://realpython.com/python-iterators-iterables/#what-is-the-python-iterator-protocol
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.index < len(self.storage):
+            contact = self.storage[self.index]
+            self.index += 1
+            return contact
+        else:
+            self.index = 0
+            raise StopIteration
 
 
 if __name__ == '__main__':
