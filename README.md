@@ -86,3 +86,6 @@ Python entry level course for people who are not familiar with programming conce
 ### Deep dive
 * [Fluent Python: Clear, Concise, and Effective Programming](https://www.amazon.com/Fluent-Python-Concise-Effective-Programming/dp/1491946008)
 * [Python Cookbook, Third Edition](https://www.amazon.com/Python-Cookbook-Third-David-Beazley/dp/1449340377)
+
+## Self check (spoilers!)
+* [Completed tasks](https://github.com/mykytapavlov/python-beginner/tree/dev)
