@@ -1,27 +1,33 @@
 # python-beginner
 Python entry level course for people who are not familiar with programming concepts
 
-## Watch in parallel
+## Extra materials [OPTIONAL]
 * [Python Tutorial for Beginners](https://www.youtube.com/watch?v=YYXdXT2l-Gg&list=PL-osiE80TeTskrapNbzXhwoFUiLCjGgY7)
+* [A Whirlwind Tour of Python](https://jakevdp.github.io/WhirlwindTourOfPython/)
+    * If looks too hard, try - [Python for Kids](https://www.oreilly.com/library/view/python-for-kids/9781457172397/)
+
+### For complete nerds
+* [Code: The Hidden Language of Computer Hardware and Software](https://www.amazon.com/Code-Language-Computer-Hardware-Software/dp/0735611319)
 
 ## Plan
 
-### Session 0. Setup
+### 0. Setup
 * [Get Python](https://www.youtube.com/watch?v=b093aqAZiPU&t=273s)
 * [Get IDE PyCharm](https://www.youtube.com/watch?v=XsL8JDkH-ec&t=30s)
 * [Git and GitHub for Beginners Tutorial](https://youtu.be/tRZGeaHPoaw)
 
-#### Homework
+#### 0.1 Homework
 * [hello_world](https://github.com/mykytapavlov/python-beginner/tree/main/0/hello_world)
 * [user_input](https://github.com/mykytapavlov/python-beginner/tree/main/0/user_input)
 
-### Session 1. Data Types. Part 1.
-* [Pointer](https://mykytapavlov.github.io/nerd/src/python/pointer)
-* [Numeric](https://mykytapavlov.github.io/nerd/src/python/built-in-types/immutable/numeric)
-* [String](https://mykytapavlov.github.io/nerd/src/python/built-in-types/immutable/string)
-* [Boolean](https://mykytapavlov.github.io/nerd/src/python/built-in-types/immutable/boolean)
+### 1. Data Types. Part 1.
+* [Variable](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/variable/variable)
+    * [Additional Reading](https://realpython.com/python-variables/)
+* [Numeric](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/built-in-types/immutable/numeric/numeric)
+* [String](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/built-in-types/immutable/string/string)
+* [Boolean](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/built-in-types/immutable/boolean/boolean)
 
-#### Homework
+#### 1.1 Homework
 * [sum_numbers](https://github.com/mykytapavlov/python-beginner/tree/main/1/sum_numbers)
 * [exponent](https://github.com/mykytapavlov/python-beginner/tree/main/1/exponent)
 * [string_size](https://github.com/mykytapavlov/python-beginner/tree/main/1/string_size)
@@ -30,14 +36,14 @@ Python entry level course for people who are not familiar with programming conce
 * [greater](https://github.com/mykytapavlov/python-beginner/tree/main/1/greater)
 * [contains](https://github.com/mykytapavlov/python-beginner/tree/main/1/contains)
 
-### Session 2. Data Types. Part 2.
-* [list](https://mykytapavlov.github.io/nerd/src/python/built-in-types/mutable/list)
-* [tuple](https://mykytapavlov.github.io/nerd/src/python/built-in-types/immutable/tuple)
-* [dict](https://mykytapavlov.github.io/nerd/src/python/built-in-types/mutable/dict)
-* [set](https://mykytapavlov.github.io/nerd/src/python/built-in-types/mutable/set)
-* [frozenset](https://mykytapavlov.github.io/nerd/src/python/built-in-types/immutable/frozenset)
+### 2. Data Types. Part 2.
+* [list](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/built-in-types/mutable/list/list)
+* [tuple](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/built-in-types/immutable/tuple/tuple)
+* [dict](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/built-in-types/mutable/dict/dict)
+* [set](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/built-in-types/mutable/set/set)
+* [frozenset](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/built-in-types/immutable/frozenset/frozenset)
 
-#### Homework
+#### 2.1 Homework
 * [sort_numbers](https://github.com/mykytapavlov/python-beginner/tree/main/2/sort_numbers)
 * [each_third](https://github.com/mykytapavlov/python-beginner/tree/main/2/each_third)
 * [equal_parts](https://github.com/mykytapavlov/python-beginner/tree/main/2/equal_parts)
@@ -45,25 +51,25 @@ Python entry level course for people who are not familiar with programming conce
 * [contact](https://github.com/mykytapavlov/python-beginner/tree/main/2/contact)
 * [unique](https://github.com/mykytapavlov/python-beginner/tree/main/2/unique)
 
-### Session 3. Control flow. Statements.
-* [if](https://mykytapavlov.github.io/nerd/src/python/control-flow/if)
-* [for](https://mykytapavlov.github.io/nerd/src/python/control-flow/for)
-* [while](https://mykytapavlov.github.io/nerd/src/python/control-flow/while)
+### 3. Control flow. Statements.
+* [if](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/control-flow/if/if)
+* [for](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/control-flow/for/for)
+* [while](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/control-flow/while/while)
 
-#### Homework
+#### 3.1 Homework
 * [movie_picker](https://github.com/mykytapavlov/python-beginner/tree/main/3/movie_picker)
 
-### Session 4. Control flow. Defining functions and handling exceptions.
-* [function](https://mykytapavlov.github.io/nerd/src/python/control-flow/function)
-* [try](https://mykytapavlov.github.io/nerd/src/python/control-flow/try)
+### 4. Control flow. Defining functions and handling exceptions.
+* [function](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/control-flow/function/function)
+* [try](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/control-flow/try/try)
 
-#### Homework
+#### 4.1 Homework
 * [refactor_it](https://github.com/mykytapavlov/python-beginner/tree/main/4/refactor_it)
 
-### Session 5. Intro to OOP. Class.
-* [class](https://mykytapavlov.github.io/nerd/src/python/oop/class)
+### 5. Intro to OOP. Class.
+* [class](https://mykytapavlov.github.io/nerd/src/engineering/software-engineering/programming-languages/python/interpreter/core/class/class)
 
-#### Homework
+#### 5.1 Homework
 * [contacts](https://github.com/mykytapavlov/python-beginner/tree/main/5/contacts)
 
 ### Session 6. Intro to OOP. Magic.
@@ -71,8 +77,8 @@ Python entry level course for people who are not familiar with programming conce
 #### Homework
 * [magic](https://github.com/mykytapavlov/python-beginner/tree/main/6/magic/README.md)
 
-### Session 7. Building console game.
-#### Homework
+### 7. Building console game - Snake bot.
+#### 7.1 Homework
 * [snake](https://github.com/mykytapavlov/python-beginner/tree/main/7/snake/README.md)
 
 
