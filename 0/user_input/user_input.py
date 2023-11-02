@@ -1,2 +1,3 @@
 if __name__ == '__main__':
-    print('Task 2. User`s input.')
+    input_var = input("Enter something here: ")
+    print("You have entered: " + input_var)
