@@ -1,4 +1,3 @@
-raw_file_content = input('Type text: ')
-file_content = raw_file_content.lower()
-for word in file_content.split():
+content = input('Type text: ')
+for word in content.split():
     print(word)
