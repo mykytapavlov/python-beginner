@@ -1,4 +1,4 @@
 x = int(input('x: '))
 y = int(input('y: '))
-sum = x + y
-print(sum)
+sum_xy = x + y
+print(sum_xy)
