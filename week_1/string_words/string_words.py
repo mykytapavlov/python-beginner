@@ -1,3 +1,3 @@
 text = input('Enter text: ')
 
-print(text.replace(' ', '\n'))
+print(text.split())
