@@ -1,5 +1,5 @@
 x = int(input("Input `x`: "))
 y = int(input("Input `y`: "))
 z = int(input("Input `z`: "))
-coordinate = tuple([x, y, z])
+coordinate = (x, y, z)
 print("Coordinate: ", coordinate)
