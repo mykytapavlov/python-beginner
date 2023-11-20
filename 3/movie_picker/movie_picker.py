@@ -21,6 +21,7 @@ if __name__ == '__main__':
         'Anthony Hopkins': ['Meet Joe Black'],
         'Jeremy Renner': ['Mission Impossible']
     }
+    # Search by Genre
     x = input("Search by Genre? {y/n}: ")
     if x == 'y':
         print(f'Available Genres: {Genres.keys()}')
@@ -34,21 +35,29 @@ if __name__ == '__main__':
                 print('Movie not found')
         else:
             print('Genre not found')
-    elif x == 'n':
-        x1 = input("Search by Actor? {y/n} ")
-s        if x1 == 'y':
-            print(f'Available Actors: {ACTORS.keys()}')
-            y1 = input("Enter Actor: ")
-            if y1 in ACTORS.keys():
-                print(f'Available movies: {ACTORS[y1]}')
-                z1 = input("Enter movie: ")
-                if z1 in ACTORS[y1]:
-                    print(f'Movie to watch: {z1}, Starring: {y1}')
-                else:
-                    print('Movie not found')
-            else:
-                print('Actor not found')
-        else:
-            print('GoodBye!')
     else:
         print("goodbye!")
+    # search by Actor
+    x1 = input("Search by Actor? {y/n} ")
+    if x1 == 'y':
+        print(f'Available Actors: {ACTORS.keys()}')
+        y1 = input("Enter Actor: ")
+        if y1 in ACTORS.keys():
+            print(f'Available movies: {ACTORS[y1]}')
+            z1 = input("Enter movie: ")
+            if z1 in ACTORS[y1]:
+                print(f'Movie to watch: {z1}, Starring: {y1}')
+            else:
+                print('Movie not found')
+        else:
+            print('Actor not found')
+    else:
+        print('GoodBye!')
+    # CAST = {
+    #     'Meet the Parents': ['Robert De Niro', 'Ben Stiller'],
+    #     'Anger Management': ['Adam Sandler', 'Jack Nicholson'],
+    #     'Mummy': ['Brendan Fraser', 'Rachel Weisz'],
+    #     'Vanilla Sky': ['Tom Cruise', 'Penelope Cruz', 'Cameron Diaz'],
+    #     'Meet Joe Black': ['Brad Pitt', 'Anthony Hopkins'],
+    #     'Mission Impossible': ['Tom Cruise', 'Jeremy Renner']
+    # }
