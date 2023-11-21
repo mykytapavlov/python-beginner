@@ -30,73 +30,108 @@ ACTORS = {
     }
 
 if __name__ == '__main__':
-    #   Task 16 BEGIN
+    # #   Task 16 BEGIN
+    #
+    # #   create set of actors from values in CAST
+    # set_of_actors = set()
+    # for key in CAST:
+    #     for value in CAST[key]:
+    #         set_of_actors.add(value)
+    # #   convert set into list
+    # list_of_actors = list(set_of_actors)
+    # #   create new dictionary with key from actors and empty value with list type
+    # Actors = {key: [] for key in list_of_actors}
+    #
+    # for actor in list_of_actors:
+    #     for key1 in CAST:
+    #         if actor in CAST[key1]:
+    #             Actors[actor].append(key1)
+    #
+    # print(f'Actors = {Actors}')
+    # #   search by Actor from new Actor dictionary
+    #
+    # search_actor = input("Search by Actor? {y/n} ")
+    # if search_actor == 'y':
+    #     print(f'Available Actors: {Actors.keys()}')
+    #     selected_actor = input("Enter Actor: ")
+    #     if selected_actor in Actors.keys():
+    #         print(f'Available movies: {Actors[selected_actor]}')
+    #         selected_movie = input("Enter movie: ")
+    #         if selected_movie in Actors[selected_actor]:
+    #             print(f'Movie to watch: {selected_movie}, Starring: {selected_actor}')
+    #         else:
+    #             print('Movie not found')
+    #     else:
+    #         print('Actor not found')
+    # else:
+    #     print('GoodBye!')
+    # #    Task 16 END
+    # #   Task 15 Start
+    # # Search by GENRE
+    # search_by_genre = input("Search by Genre? {y/n}: ")
+    # if search_by_genre == 'y':
+    #     print(f'Available Genres: {GENRE.keys()}')
+    #     selected_genre = input("Enter Genre: ")
+    #     if selected_genre in GENRE.keys():
+    #         print(f'Available movies: {GENRE[selected_genre]}')
+    #         selected_movie = input("Enter movie: ")
+    #         if selected_movie in GENRE[selected_genre]:
+    #             print(f'Movie to watch: {selected_movie}, Genre: {selected_genre}')
+    #         else:
+    #             print('Movie not found')
+    #     else:
+    #         print('Genre not found')
+    # else:
+    #     print("goodbye!")
+    # # search by Actor
+    # search_by_actor = input("Search by Actor? {y/n} ")
+    # if search_by_actor == 'y':
+    #     print(f'Available Actors: {ACTORS.keys()}')
+    #     selected_actor = input("Enter Actor: ")
+    #     if selected_actor in ACTORS.keys():
+    #         print(f'Available movies: {ACTORS[selected_actor]}')
+    #         selected_movie = input("Enter movie: ")
+    #         if selected_movie in ACTORS[selected_actor]:
+    #             print(f'Movie to watch: {selected_movie}, Starring: {selected_actor}')
+    #         else:
+    #             print('Movie not found')
+    #     else:
+    #         print('Actor not found')
+    # else:
+    #     print('GoodBye!')
+    # #   Task 15 END
 
-    #   create set of actors from values in CAST
-    set_of_actors = set()
-    for key in CAST:
-        for value in CAST[key]:
-            set_of_actors.add(value)
-    #   convert set into list
-    list_of_actors = list(set_of_actors)
-    #   create new dictionary with key from actors and empty value with list type
-    Actors = {key: [] for key in list_of_actors}
-
-    for actor in list_of_actors:
-        for key1 in CAST:
-            if actor in CAST[key1]:
-                Actors[actor].append(key1)
-
-    print(f'Actors = {Actors}')
-    #   search by Actor from new Actor dictionary
-
-    search_actor = input("Search by Actor? {y/n} ")
-    if search_actor == 'y':
-        print(f'Available Actors: {Actors.keys()}')
-        selected_actor = input("Enter Actor: ")
-        if selected_actor in Actors.keys():
-            print(f'Available movies: {Actors[selected_actor]}')
-            selected_movie = input("Enter movie: ")
-            if selected_movie in Actors[selected_actor]:
-                print(f'Movie to watch: {selected_movie}, Starring: {selected_actor}')
-            else:
-                print('Movie not found')
-        else:
-            print('Actor not found')
-    else:
-        print('GoodBye!')
-    #    Task 16 END
-    #   Task 15 Start
-    # Search by GENRE
+    #   Task 17 Start
     search_by_genre = input("Search by Genre? {y/n}: ")
     if search_by_genre == 'y':
         print(f'Available Genres: {GENRE.keys()}')
         selected_genre = input("Enter Genre: ")
-        if selected_genre in GENRE.keys():
-            print(f'Available movies: {GENRE[selected_genre]}')
+        while selected_genre not in GENRE.keys():
+            print(f'Genre {selected_genre} not found. Please try again.')
+            selected_genre = input("Enter Genre: ")
+
+        print(f'Available movies: {GENRE[selected_genre]}')
+
+        selected_movie = input("Enter movie: ")
+        while selected_movie not in GENRE[selected_genre]:
+            print(f'Movie {selected_movie} not found. Please try again.')
             selected_movie = input("Enter movie: ")
-            if selected_movie in GENRE[selected_genre]:
-                print(f'Movie to watch: {selected_movie}, Genre: {selected_genre}')
-            else:
-                print('Movie not found')
-        else:
-            print('Genre not found')
-    else:
-        print("goodbye!")
+        print(f'Movie to watch: {selected_movie}, Genre: {selected_genre}')
+
     # search by Actor
     search_by_actor = input("Search by Actor? {y/n} ")
     if search_by_actor == 'y':
         print(f'Available Actors: {ACTORS.keys()}')
         selected_actor = input("Enter Actor: ")
-        if selected_actor in ACTORS.keys():
-            print(f'Available movies: {ACTORS[selected_actor]}')
+        while selected_actor not in ACTORS.keys():
+            print(f'Actor {selected_actor} not found. Please try again.')
+            selected_actor = input("Enter Actor: ")
+
+        print(f'Available movies: {ACTORS[selected_actor]}')
+
+        selected_movie = input("Enter movie: ")
+        while selected_movie not in ACTORS[selected_actor]:
+            print(f'Movie {selected_movie} not found. Please try again.')
             selected_movie = input("Enter movie: ")
-            if selected_movie in ACTORS[selected_actor]:
-                print(f'Movie to watch: {selected_movie}, Starring: {selected_actor}')
-            else:
-                print('Movie not found')
-        else:
-            print('Actor not found')
-    else:
-        print('GoodBye!')
-    #   Task 15 END
+
+        print(f'Movie to watch: {selected_movie}, Starring: {selected_actor}')
