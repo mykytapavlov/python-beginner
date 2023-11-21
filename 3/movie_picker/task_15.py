@@ -26,16 +26,17 @@ if __name__ == '__main__':
     }
 
     genre_check = input('Search by Genre(y/n): ').lower()
+
     if genre_check == 'y':
         print(f'Available Genres: {list(GENRES.keys())}')
-
         genre = input('Enter genre: ').lower()
+
         if genre in GENRES.keys():
             movies = GENRES[genre]
             print(movies)
-            movie = input('Enter movie: ')
+            movie = input('Enter movie: ').title()
 
-            if str(movie).title() in movies:
+            if movie in movies:
                 print(f'Movie to watch: {movie.title()}. Genre: {genre}')
 
 
@@ -49,9 +50,9 @@ if __name__ == '__main__':
             if actor in ACTORS.keys():
                 movies_1 = ACTORS[actor]
                 print(movies_1)
-                movie = input('Enter movie: ')
+                movie = input('Enter movie: ').title()
 
-                if str(movie).title() in movies_1:
+                if movie in movies_1:
                     print(f'Movie to watch: {movie.title()}. Starring: {actor.title()}')
 
     else:
