@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
             if actor in ACTORS.keys():
                 movies_1 = ACTORS[actor]
-                print(movies_1)
+                print(f'Available movies: {movies_1}')
                 movie = input('Enter movie: ').title()
 
                 if movie in movies_1:
