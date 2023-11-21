@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
         if genre in GENRES.keys():
             movies = GENRES[genre]
-            print(movies)
+            print(f'Available Movies: {movies}')
             movie = input('Enter movie: ').title()
 
             if movie in movies:
