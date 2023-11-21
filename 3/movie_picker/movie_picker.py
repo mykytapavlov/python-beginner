@@ -1,13 +1,20 @@
-if __name__ == '__main__':
-    Genres = {
-        'comedy': ['Meet the parents', 'Angers Management'],
-        'adventures': ['Mummy'],
-        'romantic': ['Vanilla Sky', 'Meet Joe Black'],
-        'drama': ['Meet Joe Black', 'YSP'],
-        'thriller': ['Vanilla Sky'],
-        'action': ['Mission impossible']
-    }
-    ACTORS = {
+GENRE = {
+    'comedy': ['Meet the parents', 'Angers Management'],
+    'adventures': ['Mummy'],
+    'romantic': ['Vanilla Sky', 'Meet Joe Black'],
+    'drama': ['Meet Joe Black'],
+    'thriller': ['Vanilla Sky'],
+    'action': ['Mission impossible']
+}
+CAST = {
+    'Meet the Parents': ['Robert De Niro', 'Ben Stiller'],
+    'Anger Management': ['Adam Sandler', 'Jack Nicholson'],
+    'Mummy': ['Brendan Fraser', 'Rachel Weisz'],
+    'Vanilla Sky': ['Tom Cruise', 'Penelope Cruz', 'Cameron Diaz'],
+    'Meet Joe Black': ['Brad Pitt', 'Anthony Hopkins'],
+    'Mission Impossible': ['Tom Cruise', 'Jeremy Renner']
+}
+ACTORS = {
         'Robert De Niro': ['Meet the Parents'],
         'Ben Stiller': ['Meet the Parents'],
         'Adam Sandler': ['Anger Management'],
@@ -21,16 +28,55 @@ if __name__ == '__main__':
         'Anthony Hopkins': ['Meet Joe Black'],
         'Jeremy Renner': ['Mission Impossible']
     }
-    # Search by Genre
-    x = input("Search by Genre? {y/n}: ")
-    if x == 'y':
-        print(f'Available Genres: {Genres.keys()}')
-        y = input("Enter Genre: ")
-        if y in Genres.keys():
-            print(f'Available movies: {Genres[y]}')
-            z = input("Enter movie: ")
-            if z in Genres[y]:
-                print(f'Movie to watch: {z}, Genre: {y}')
+
+if __name__ == '__main__':
+    #   Task 16 BEGIN
+
+    #   create set of actors from values in CAST
+    set_of_actors = set()
+    for key in CAST:
+        for value in CAST[key]:
+            set_of_actors.add(value)
+    #   convert set into list
+    list_of_actors = list(set_of_actors)
+    #   create new dictionary with key from actors and empty value with list type
+    Actors = {key: [] for key in list_of_actors}
+
+    for actor in list_of_actors:
+        for key1 in CAST:
+            if actor in CAST[key1]:
+                Actors[actor].append(key1)
+
+    print(f'Actors = {Actors}')
+    #   search by Actor from new Actor dictionary
+
+    search_actor = input("Search by Actor? {y/n} ")
+    if search_actor == 'y':
+        print(f'Available Actors: {Actors.keys()}')
+        selected_actor = input("Enter Actor: ")
+        if selected_actor in Actors.keys():
+            print(f'Available movies: {Actors[selected_actor]}')
+            selected_movie = input("Enter movie: ")
+            if selected_movie in Actors[selected_actor]:
+                print(f'Movie to watch: {selected_movie}, Starring: {selected_actor}')
+            else:
+                print('Movie not found')
+        else:
+            print('Actor not found')
+    else:
+        print('GoodBye!')
+    #    Task 16 END
+    #   Task 15 Start
+    # Search by GENRE
+    search_by_genre = input("Search by Genre? {y/n}: ")
+    if search_by_genre == 'y':
+        print(f'Available Genres: {GENRE.keys()}')
+        selected_genre = input("Enter Genre: ")
+        if selected_genre in GENRE.keys():
+            print(f'Available movies: {GENRE[selected_genre]}')
+            selected_movie = input("Enter movie: ")
+            if selected_movie in GENRE[selected_genre]:
+                print(f'Movie to watch: {selected_movie}, Genre: {selected_genre}')
             else:
                 print('Movie not found')
         else:
@@ -38,26 +84,19 @@ if __name__ == '__main__':
     else:
         print("goodbye!")
     # search by Actor
-    x1 = input("Search by Actor? {y/n} ")
-    if x1 == 'y':
+    search_by_actor = input("Search by Actor? {y/n} ")
+    if search_by_actor == 'y':
         print(f'Available Actors: {ACTORS.keys()}')
-        y1 = input("Enter Actor: ")
-        if y1 in ACTORS.keys():
-            print(f'Available movies: {ACTORS[y1]}')
-            z1 = input("Enter movie: ")
-            if z1 in ACTORS[y1]:
-                print(f'Movie to watch: {z1}, Starring: {y1}')
+        selected_actor = input("Enter Actor: ")
+        if selected_actor in ACTORS.keys():
+            print(f'Available movies: {ACTORS[selected_actor]}')
+            selected_movie = input("Enter movie: ")
+            if selected_movie in ACTORS[selected_actor]:
+                print(f'Movie to watch: {selected_movie}, Starring: {selected_actor}')
             else:
                 print('Movie not found')
         else:
             print('Actor not found')
     else:
         print('GoodBye!')
-    # CAST = {
-    #     'Meet the Parents': ['Robert De Niro', 'Ben Stiller'],
-    #     'Anger Management': ['Adam Sandler', 'Jack Nicholson'],
-    #     'Mummy': ['Brendan Fraser', 'Rachel Weisz'],
-    #     'Vanilla Sky': ['Tom Cruise', 'Penelope Cruz', 'Cameron Diaz'],
-    #     'Meet Joe Black': ['Brad Pitt', 'Anthony Hopkins'],
-    #     'Mission Impossible': ['Tom Cruise', 'Jeremy Renner']
-    # }
+    #   Task 15 END
