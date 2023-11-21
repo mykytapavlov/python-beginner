@@ -135,3 +135,28 @@ if __name__ == '__main__':
             selected_movie = input("Enter movie: ")
 
         print(f'Movie to watch: {selected_movie}, Starring: {selected_actor}')
+
+    # Task 16 - another solution:
+    search_by_actor = input("Search by actor {y/n}? ")
+    if search_by_actor == 'y':
+        set_of_actors = set()
+        for key in CAST:
+            for value in CAST[key]:
+                set_of_actors.add(value)
+        print(f'Available actors: {set_of_actors}')
+        selected_actor = input("Enter Actor:")
+        available_movies = list()
+        if selected_actor in set_of_actors:
+            for key in CAST:
+                for value in CAST[key]:
+                    if selected_actor == value:
+                        available_movies.append(key)
+            print(f"Available movies: {available_movies}")
+
+            selected_movie = input("Enter movie: ")
+            if selected_movie in available_movies:
+                print(f'Movie to watch: {selected_movie}. Starring: {selected_actor}')
+            else:
+                print("Movie not found")
+        else:
+            print("Actor not found")
