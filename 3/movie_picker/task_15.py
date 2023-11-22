@@ -11,7 +11,7 @@ if __name__ == '__main__':
     }
 
     ACTORS = {
-        'Robert De Niro': ['Meet the Parents'],
+        'Robert De Niro': ['Meet The Parents'],
         'Ben Stiller': ['Meet The Parents'],
         'Adam Sandler': ['Anger Management'],
         'Jack Nicholson': ['Anger Management'],
