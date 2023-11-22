@@ -37,33 +37,26 @@ if __name__ == '__main__':
 
     elif genre_check == 'n':
         actor_check = input('Search by Actor(y/n): ')
-
+        
         if actor_check == 'y':
+            actors = {}
+            for movie, actor_list in CAST.items():
+                for actor in actor_list:
+                    if actor not in actors:
+                        actors[actor] = []
+                    actors[actor].append(movie)
 
-            cast_a = []
-            for sublist in list(CAST.values()):
-                for element in sublist:
-                    cast_a.append(sublist)
-                    cast = []
-                    for sublist in cast_a:
-                        for element in sublist:
-                            cast.append(element)
-
-            set_cast = set(cast)
-            print(f'Available Actors: {list(set_cast)}')
+            print(f'Available Actors: {list(actors.keys())}')
             actor = input('Enter actor: ').title()
 
             for movie, cast in CAST.items():
                 if actor in cast:
                     print(f'Available movies: {movie} with {actor}')
-
                     movie_to_watch = input('Enter movie: ').title()
 
                     if movie_to_watch == movie:
                         print(f'Movie to watch: {movie}. Starring: {actor}')
                     break
-
-
 
     else:
         exit()

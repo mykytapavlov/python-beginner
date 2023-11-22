@@ -51,7 +51,6 @@ if __name__ == '__main__':
             else:
                 print(f"Genre {genre} not found. Please try again.")
 
-
     elif genre_check == 'n':
         actor_check = input('Search by Actor(y/n): ')
         print("Available Actors:", list(ACTORS.keys()))
