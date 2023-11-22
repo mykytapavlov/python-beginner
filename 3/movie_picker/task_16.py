@@ -56,12 +56,14 @@ if __name__ == '__main__':
             for movie, cast in CAST.items():
                 if actor in cast:
                     print(f'Available movies: {movie} with {actor}')
+
+                    movie_to_watch = input('Enter movie: ').title()
+
+                    if movie_to_watch == movie:
+                        print(f'Movie to watch: {movie}. Starring: {actor}')
                     break
 
-            movie_to_watch = input('Enter movie: ').title()
 
-            if movie_to_watch == movie:
-                print(f'Movie to watch: {movie}. Starring: {actor}')
 
     else:
         exit()
