@@ -30,12 +30,10 @@ if __name__ == '__main__':
     if genre_check == 'y':
         print(f'Available Genres: {list(GENRES.keys())}')
 
-        available_genres = list(GENRES.keys())
-
         while True:
             genre = input("Enter genre: ").lower()
 
-            if genre in available_genres:
+            if genre in list(GENRES.keys()):
                 movies = GENRES[genre]
                 print("Available Movies:", movies)
 
@@ -56,13 +54,12 @@ if __name__ == '__main__':
 
     elif genre_check == 'n':
         actor_check = input('Search by Actor(y/n): ')
-        available_actors = list(ACTORS.keys())
-        print("Available Actors:", available_actors)
+        print("Available Actors:", list(ACTORS.keys()))
 
         while True:
             actor = input("Enter actor: ").title()
 
-            if actor in available_actors:
+            if actor in list(ACTORS.keys()):
                 movies_1 = ACTORS[actor]
                 print(f"Available movies: {movies_1} with {actor}")
 
