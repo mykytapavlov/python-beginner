@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
     elif genre_check == 'n':
         actor_check = input('Search by Actor(y/n): ')
-        
+
         if actor_check == 'y':
             actors = {}
             for movie, actor_list in CAST.items():
