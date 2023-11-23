@@ -48,12 +48,12 @@ if __name__ == '__main__':
             actor = input('Enter actor: ').title()
 
             if actor in ACTORS.keys():
-                movies_1 = ACTORS[actor]
-                print(f'Available movies: {movies_1}')
-                movie = input('Enter movie: ').title()
+                available_movies = ACTORS[actor]
+                print(f'Available movies: {available_movies}')
+                enter_movie = input('Enter movie: ').title()
 
-                if movie in movies_1:
-                    print(f'Movie to watch: {movie.title()}. Starring: {actor.title()}')
+                if enter_movie in available_movies:
+                    print(f'Movie to watch: {enter_movie.title()}. Starring: {actor.title()}')
 
     else:
         exit()
