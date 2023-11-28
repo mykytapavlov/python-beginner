@@ -46,6 +46,9 @@ if __name__ == '__main__':
                         print(f"Movie {movie} not found. Please try again.")
                 break
 
+            else:
+                print(f"Genre {genre} not found. Please try again.")
+
     def search_by_actor():
         print("Available Actors:", list(ACTORS.keys()))
 
