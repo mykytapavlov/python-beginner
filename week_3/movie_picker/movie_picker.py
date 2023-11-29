@@ -1,4 +1,3 @@
-
 GENRES = {
     'comedy': ['Meet the Parents', 'Anger Management'],
     'adventures': ['Mummy'],
@@ -8,20 +7,15 @@ GENRES = {
     'action': ['Mission Impossible']
 }
 
-ACTORS = {
-    'Robert De Niro': ['Meet the Parents'],
-    'Ben Stiller': ['Meet the Parents'],
-    'Adam Sandler': ['Anger Management'],
-    'Jack Nicholson': ['Anger Management'],
-    'Brendan Fraser': ['Mummy'],
-    'Rachel Weisz': ['Mummy'],
-    'Tom Cruise': ['Vanilla Sky', 'Mission Impossible'],
-    'Penelope Cruz': ['Vanilla Sky'],
-    'Cameron Diaz': ['Vanilla Sky'],
-    'Brad Pitt': ['Meet Joe Black'],
-    'Anthony Hopkins': ['Meet Joe Black'],
-    'Jeremy Renner': ['Mission Impossible']
+CAST = {
+    'Meet the Parents': ['Robert De Niro', 'Ben Stiller'],
+    'Anger Management': ['Adam Sandler', 'Jack Nicholson'],
+    'Mummy': ['Brendan Fraser', 'Rachel Weisz'],
+    'Vanilla Sky': ['Tom Cruise', 'Penelope Cruz', 'Cameron Diaz'],
+    'Meet Joe Black': ['Brad Pitt', 'Anthony Hopkins'],
+    'Mission Impossible': ['Tom Cruise', 'Jeremy Renner']
 }
+
 search = input("Search by Genre: ")
 if search == 'y':
     genre_keys = list(GENRES.keys())
@@ -36,27 +30,24 @@ if search == 'y':
         if movie_g in genre_movies:
             print("Movie to watch: ", movie_g.title(), ". Genre: ", search_genre.title())
         else:
-            print(f"{movie_g} not found in the list")
+            print(f"{movie_g} not found in the list of genres")
     else:
-        print(f"{search_genre} not found in the list")
+        print(f"{search_genre} not found in the list of films")
 else:
-    search_actors = input("Search by Actors: ")
-    if search_actors == 'y':
-        actors_keys = list(ACTORS.keys())
-        print("Available Actors:", str(actors_keys).strip('[]'))
+    search_actor = input("Search by Actor: ")
 
-        enter_actor = input("Enter actor: ")
-        if enter_actor in ACTORS.keys():
-            actor_movies = str(ACTORS[enter_actor])
-            print("Available movies: ", actor_movies.strip('[]'))
+    if search_actor == 'y':
+        actor = input("Enter actor: ")
+        print(f'Available movies: ')
+        for movie, cast in CAST.items():
+            if actor in cast:
+                print(f'{movie} with {actor}')
+            continue
 
-            movie_a = input("Enter movie: ")
-            if movie_a in actor_movies:
-                print("Movie to watch: ", movie_a.title(), ". Starring: ", enter_actor.title())
-            else:
-                print(f"{movie_a} not found in the list of available movies")
-        else:
-            print(f"{enter_actor} not found in the list of available actors")
+        movie_name = input("Enter movie: ").title()
+        for movie, cast in CAST.items():
+            if movie_name in movie:
+                print("Movie to watch: ", movie_name.title(), ". Starring: ", actor.title())
 
     else:
-        print("Search was not successful. Please start the program again to repeat your try.")
+        print(f"Restart the program to search again")
