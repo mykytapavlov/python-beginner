@@ -22,14 +22,14 @@ ACTORS = {
     'Anthony Hopkins': ['Meet Joe Black'],
     'Jeremy Renner': ['Mission Impossible']
 }
-search=input("Search by Genre: ")
+search = input("Search by Genre: ")
 if search == 'y':
-    genre_keys=list(GENRES.keys())
+    genre_keys = list(GENRES.keys())
     print(f"Available Genres:", str(genre_keys).strip('[]'))
 
     search_genre = input("Enter genre: ")
     if search_genre in GENRES.keys():
-        genre_movies=str(GENRES[search_genre])
+        genre_movies = str(GENRES[search_genre])
         print("Available movies: ", genre_movies.strip('[]'))
 
         movie_g = input("Enter movie: ")
@@ -42,20 +42,21 @@ if search == 'y':
 else:
     search_actors = input("Search by Actors: ")
     if search_actors == 'y':
-        actors_keys=list(ACTORS.keys())
+        actors_keys = list(ACTORS.keys())
         print("Available Actors:", str(actors_keys).strip('[]'))
 
-        actors = input("Enter actor: ")
-        if actors in ACTORS.keys():
-            actor_movies = list(ACTORS[actors])
-            print("Available movies: ", str(actor_movies).strip('[]'))
+        enter_actor = input("Enter actor: ")
+        if enter_actor in ACTORS.keys():
+            actor_movies = str(ACTORS[enter_actor])
+            print("Available movies: ", actor_movies.strip('[]'))
 
-            movie = input("Enter movie: ").title()
-            if movie in actor_movies:
-                print("Movie to watch: ",movie.title(), ". Starring: ",actors.title() )
+            movie_a = input("Enter movie: ")
+            if movie_a in actor_movies:
+                print("Movie to watch: ", movie_a.title(), ". Starring: ", enter_actor.title())
             else:
-                print(f"{movie} not found in the list")
+                print(f"{movie_a} not found in the list of available movies")
         else:
-            print(f"{actors} not found in the list")
+            print(f"{enter_actor} not found in the list of available actors")
+
     else:
-        print("Search was not successful. Please start the program again to repiet your try.")
+        print("Search was not successful. Please start the program again to repeat your try.")
