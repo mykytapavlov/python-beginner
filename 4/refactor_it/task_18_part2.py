@@ -1,5 +1,5 @@
 if __name__ == '__main__':
-    print('Tasks 18. Movie picker 2. Part 1')
+    print('Tasks 18. Movie picker 2. Part 2')
 
     GENRES = {
         'comedy': ['Meet The Parents', 'Anger Management'],
@@ -19,6 +19,11 @@ if __name__ == '__main__':
         'Mission Impossible': ['Tom Cruise', 'Jeremy Renner']
     }
 
+    PG = {
+        13: {'Meet The Parents', 'Anger Management', 'Mummy', 'Meet Joe Black', 'Mission Impossible'},
+        16: {'Vanilla Sky'}
+    }
+
 
     def movies_by_actors(cast):
         actors = {}
@@ -29,6 +34,14 @@ if __name__ == '__main__':
                 actors[actor].append(movie)
         return actors
 
+    def prepare(genres, pg_ratings, user_age):
+        allowed_movies = set()
+        for age_limit, movies in pg_ratings.items():
+            if user_age >= age_limit:
+                allowed_movies.update(movies)
+
+        new_genres = {genre: list(set(movies) & allowed_movies) for genre, movies in genres.items()}
+        return new_genres
 
     def search(source, source_name):
         while True:
@@ -50,18 +63,28 @@ if __name__ == '__main__':
             else:
                 print(f'Invalid {source_name}. Try again.')
 
-
     ACTORS = movies_by_actors(CAST)
 
-    genre_check = input('Search by Genre(y/n): ').lower()
-    if genre_check == 'y':
-        search(GENRES, 'genre')
+    try:
+        user_age = int(input('Please enter your age: '))
+        if not isinstance(user_age, int):
+            raise ValueError('Age must be an integer.')
 
-    elif genre_check == 'n':
-        actor_check = input('Search by Actor(y/n): ')
+        filtered_genres = prepare(GENRES, PG, user_age)
+        filtered_actors = prepare(ACTORS, PG, user_age)
 
-        if actor_check == 'y':
-            search(ACTORS, 'actor')
+        genre_check = input('Search by Genre(y/n): ').lower()
+        if genre_check == 'y':
+            search(filtered_genres, 'genre')
 
-    else:
-        exit()
+        elif genre_check == 'n':
+            actor_check = input('Search by Actor(y/n): ')
+
+            if actor_check == 'y':
+                search(filtered_actors, 'actor')
+
+        else:
+            exit()
+
+    except ValueError as ve:
+        print(f"Invalid input: {ve}")
