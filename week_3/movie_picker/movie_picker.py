@@ -24,7 +24,7 @@ if search == 'y':
     search_genre = input("Enter genre: ")
     if search_genre in GENRES.keys():
         genre_movies = str(GENRES[search_genre])
-        print("Available movies: test", genre_movies.strip('[]'))
+        print("Available movies: ", genre_movies.strip('[]'))
 
         movie_g = input("Enter movie: ")
         if movie_g in genre_movies:
@@ -37,6 +37,12 @@ else:
     search_actor = input("Search by Actor: ")
 
     if search_actor == 'y':
+        available_actors = []
+        for key, val in CAST.items():
+            for i in val:
+                available_actors.append(i)
+        print(f'Available actors: ', available_actors)
+
         actor = input("Enter actor: ")
         print(f'Available movies: ')
         for movie, cast in CAST.items():
