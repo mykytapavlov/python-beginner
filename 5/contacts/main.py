@@ -1,29 +1,20 @@
-from contact import contact, validate_name, validate_age, validate_email
-
+from contact import create_contact
+from contact_list import ContactList
 
 if __name__ == '__main__':
     print('Task 19. Contact List')
 
-    contact_list = []
+    contact_list = ContactList()
 
     while True:
         try:
             name = input('name: ')
-            validate_name(name)
-
             email = input('email: ')
-            validate_email(email)
-
             age = input('age: ')
-            validate_age(age)
+            new_contact = create_contact(name, email, age)
         except ValueError as e:
             print(e)
             continue
-
-        new_contact = contact.copy()
-        new_contact['name'] = name
-        new_contact['email'] = email
-        new_contact['age'] = age
 
         print('-' * 10)
         print(new_contact)
@@ -32,5 +23,9 @@ if __name__ == '__main__':
         contact_list.append(new_contact)
         proceed = input('add another one? (y/n): ')
 
-        if proceed != 'y':
+        if proceed.lower() != 'y':
             break
+
+    print('Contact List:')
+    for contact in contact_list:
+        print(contact)
