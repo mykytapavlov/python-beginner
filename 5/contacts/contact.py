@@ -4,7 +4,6 @@ class Contact:
         self._email = None
         self._age = None
 
-
     @property
     def name(self):
         return self._name
