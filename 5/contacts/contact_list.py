@@ -16,6 +16,28 @@ class ContactList:
         self.storage = []
         self.index = 0
 
+    def append(self, user):
+        self.storage.append(user)
+        self.index += 1
+
+    def __iter__(self):
+        self._current_index = 0
+        return self
+
+    def __next__(self):
+        if self._current_index < len(self.storage):
+            current_user = self.storage[self._current_index]
+            self._current_index += 1
+            return current_user
+        else:
+            raise StopIteration
+
+    def __str__(self):
+        all_users_list = []
+        for user in self.storage:
+            all_users_list.append(f"Name: {user.name}, Age: {user.age}, Email: {user.email}")
+        return f"\n" .join(all_users_list) + f'\ntotal amount= {len(self.storage)}'
+
     # Remember I told, that if you want to print your custom class nicely,
     # you need to defined __str__ method and tell python what to print exactly.
 
@@ -25,13 +47,15 @@ class ContactList:
 if __name__ == '__main__':
     contact_list = ContactList()
     mike = Contact(name='Mike', email='mike@example.com', age=30)
-
+    sem = Contact(name='Sem', email='sem@example.com', age=45)
     # should append only instances of Contact class
     contact_list.append(mike)
+    contact_list.append(sem)
 
     # should print list of contacts nicely as well as total amount
     print(contact_list)
 
+    print("======================")
     # should print each contact nicely
     for contact in contact_list:
         print(contact)
