@@ -46,8 +46,14 @@ class ContactList:
 
 if __name__ == '__main__':
     contact_list = ContactList()
-    mike = Contact(name='Mike', email='mike@example.com', age=30)
-    sem = Contact(name='Sem', email='sem@example.com', age=45)
+    mike = Contact()
+    mike.name = 'Mike'
+    mike.email = 'mike@example.com'
+    mike.age = 30
+    sem = Contact()
+    sem.name = 'Sem'
+    sem.email = 'sem@example.com'
+    sem.age = 45
     # should append only instances of Contact class
     contact_list.append(mike)
     contact_list.append(sem)

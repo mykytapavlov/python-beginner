@@ -1,58 +1,49 @@
-# contact = {
-#     'name': None,
-#     'email': None,
-#     'age': None
-# }
-#
-#
-# def validate_name(name):
-#     if len(name) > 50:
-#         raise ValueError('Name is too large!')
-#
-#
-# def validate_email(email):
-#     if '@' not in email or '.' not in email:
-#         raise ValueError('Invalid email!')
-#
-#
-# def validate_age(age):
-#     try:
-#         age = int(age)  # Python will raise ValueError if not numeric
-#         if age <= 0:
-#             # We ask Python to raise ValueError if <= 0
-#             raise ValueError
-#     except ValueError:
-#         raise ValueError('Invalid age!')
-#
 class Contact:
-    # Contact(name='Jack', email='jack@example.com', age=30)
-    def __init__(self, age, email, name):
-        if self.validate_age(age):
-            self.age = age
-        else:
-            raise ValueError("Invalid age")
-        if self.validate_name(name):
-            self.name = name
-        else:
-            raise ValueError("Name is too long")
-        if self.validate_email(email):
-            self.email = email
-        else:
-            raise ValueError("Invalid email!")
+    def __init__(self):
+        self._age = None
+        self._name = None
+        self._email = None
 
-    @staticmethod
-    def validate_name(name):
+    @property
+    def age(self):
+        return self._age
+
+    @age.setter
+    def age(self, age):
+        if isinstance(age, int) and age < 90:
+            self._age = age
+        else:
+            raise ValueError(f'Incorrect age. Wrong type for age or age is more that 90')
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
         if len(name) <= 50:
-            return True
+            self._name = name.capitalize()
+        else:
+            raise ValueError('Name is too large!')
 
-    @staticmethod
-    def validate_email(email):
+    @property
+    def email(self):
+        return self._email
+
+    @email.setter
+    def email(self, email):
         if '@' in email and '.' in email:
-            return True
-
-    def validate_age(self, age):
-        if isinstance(age, int) is True:
-            return True
+            self._email = email
+        else:
+            raise ValueError('Invalid email!')
 
     def __str__(self):
-        return f"Name: {self.name}, Age: {self.age}, Email: {self.email}"
+        return f"Name: {self._name}, Age: {self._age}, Email: {self._email}"
+
+
+if __name__ == '__main__':
+    mike = Contact()
+    mike.age = 89
+    mike.name = 'Mike'
+    mike.email = 'mike@test.com'
+    print(f'hello: {mike.name}, {mike.age} year(s), {mike.email}')
