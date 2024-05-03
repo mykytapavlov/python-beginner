@@ -1,4 +1,5 @@
 if __name__ == '__main__':
     print('Task 1. Hello world.')
-variable="hello world!"
-print (variable)
+
+r ="hello world!"
+print (r)
