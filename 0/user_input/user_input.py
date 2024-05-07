@@ -1,2 +1,2 @@
-if __name__ == '__main__':
-    print('Task 2. User`s input.')
+lesson_2_input  = input('give me a word: ')
+print(lesson_2_input)
