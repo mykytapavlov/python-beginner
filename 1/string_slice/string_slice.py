@@ -1,2 +1,4 @@
-if __name__ == '__main__':
-    print('Task 7. String slice')
+string = input("Write a sentence: ")
+start = input('Set start: ')
+end = input('Set end: ')
+print(string[int(start) - int(end)])
