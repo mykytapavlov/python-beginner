@@ -1,2 +1,3 @@
-if __name__ == '__main__':
-    print('Task 5. String size')
+print('Enter your string')
+a=input()
+print("The size of your string is: ", len(a))
