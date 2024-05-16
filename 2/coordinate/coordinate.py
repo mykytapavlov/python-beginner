@@ -1,2 +1,2 @@
-if __name__ == '__main__':
-    print('Task 13. Coordinate.')
+coordinate = (int(input('Enter X: ')), int(input('Enter Y: ')), int(input('Enter Z: ')))
+print('Coordinate ', coordinate)
