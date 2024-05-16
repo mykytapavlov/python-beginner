@@ -10,3 +10,8 @@ user_input8 = values_list.append(input('Enter a character8: '))
 every_third = values_list[::2]
 print(values_list)
 print(every_third)
+
+# or
+# values_list = [3, 2, 1, 4, 5, 2, 'ss', 'q']
+# every_third = values_list[::2]
+# print(every_third)
