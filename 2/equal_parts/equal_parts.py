@@ -1,2 +1,7 @@
-if __name__ == '__main__':
-    print('Task 12. Equal parts')
+some_string = input('Enter any sentence: ').split()
+list_length = int(len(some_string)/2)
+print(list_length)
+
+print(some_string[:list_length])
+print(some_string[list_length:])
+
