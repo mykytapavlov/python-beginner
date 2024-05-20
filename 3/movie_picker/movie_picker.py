@@ -1,5 +1,3 @@
-import self
-
 GENRES = {
     'comedy': ['Meet the Parents', 'Anger Management'],
     'adventures': ['Mummy'],
@@ -22,8 +20,48 @@ ACTORS = {
     'Anthony Hopkins': ['Meet Joe Black'],
     'Jeremy Renner': ['Mission Impossible']
 }
+CAST = {
+    'Meet the Parents': ['Robert De Niro', 'Ben Stiller'],
+    'Anger Management': ['Adam Sandler', 'Jack Nicholson'],
+    'Mummy': ['Brendan Fraser', 'Rachel Weisz'],
+    'Vanilla Sky': ['Tom Cruise', 'Penelope Cruz', 'Cameron Diaz'],
+    'Meet Joe Black': ['Brad Pitt', 'Anthony Hopkins'],
+    'Mission Impossible': ['Tom Cruise', 'Jeremy Renner']
+}
+
+# task 16
+user_input_genre = input('Search by Genre y/n: ')
+if user_input_genre == 'y':
+    print('Available Genres: ', list(GENRES.keys()))
+    enter_genre_input = input('Enter genre: ')
+    for genre in GENRES:
+        if enter_genre_input in genre:
+            print('Available Movies: ', GENRES.get(genre))
+            enter_input_movie = input('Enter movie: ')
+            for movie in GENRES.get(genre):
+                if enter_input_movie in movie:
+                    print('Movie to watch:', movie + '.', 'Genre:', enter_genre_input + '.')
+if user_input_genre == 'n':
+    user_input_actor = input('Search by Actor y/n: ')
+    if user_input_actor == 'y':
+        available_actors = []
+        for actor in CAST.values():
+            for x in actor:
+                available_actors.append(x)
+        print('Available Actors:', available_actors)
+    enter_actor_input = input('Enter actor: ')
+    available_movies = []
+    for another_movie, another_actor in CAST.items():
+        if enter_actor_input in another_actor:
+            available_movies.append(another_movie)
+    print('Available movies:', available_movies, 'with', enter_actor_input)
+    enter_movie_input = input('Enter movie: ')
+    for different_movie in available_movies:
+        if enter_movie_input in different_movie:
+            print('Movie to watch:', different_movie + '.', 'Starring:', enter_actor_input + '.')
 
 # task 15
+'''
 user_input_genre = input('Search by Genre y/n: ')
 if user_input_genre == 'y':
     print('Available Genres: ', list(GENRES.keys()))
@@ -43,6 +81,7 @@ if user_input_genre == 'n':
             enter_movie_input = input('Enter movie: ')
             if enter_movie_input in ACTORS.get(enter_actor_input):
                 print('Movie to watch:', enter_movie_input + '.', 'Starring:', enter_actor_input)
+'''
 
 # my own solution
 '''
