@@ -30,44 +30,52 @@ CAST = {
     'Meet Joe Black': ['Brad Pitt', 'Anthony Hopkins'],
     'Mission Impossible': ['Tom Cruise', 'Jeremy Renner']
 }
-start=input('Search by Genre: ')
-if start=='y':
-    print(f'Available genres {GENRES.keys()}')
-    g=input("Enter genre: ")
-    if g in GENRES.keys():
-        print('Available movies', GENRES[g])
-        m=input("Enter movie: ")
-        if m in GENRES[g]:
-            print(f"Movie to watch: {m}. Genre: {g}")
-        else:
-            print('The movie was not found, try ones more ')
-    else:
-        print('The genre was not found, try ones more ')
-
-elif start=='n':
-    next=input('Search by actor: ')
-    if next=='y':
-        actors=set()
-        for actor_list in CAST.values():
-            for actor in actor_list:
-                actors.add(actor)
-        print(f'Available actors: {list(actors)}')
-
-        a=input("Enter actor: ")
-        movies= []
-        for mov, actor_list in CAST.items():
-            if a in actor_list:
-                movies.append(mov)
-        if movies:
-            print(f'Available movies: {movies} with {a}')
-            m=input('Enter movie: ')
-            if m in movies:
-                print(f"Movie to watch: {m}. Starring: {a}")
+while True:
+    start=input('Search by Genre: ')
+    if start=='y':
+        print(f'Available genres {GENRES.keys()}')
+        while True:
+            g=input("Enter genre: ")
+            if g in GENRES.keys():
+                print('Available movies', GENRES[g])
+                while True:
+                    m=input("Enter movie: ")
+                    if m in GENRES[g]:
+                        print(f"Movie to watch: {m}. Genre: {g}")
+                        break
+                    else:
+                        print('The movie was not found, try ones more ')
+                break
             else:
-                print('The movie was not found, try ones more')
+                print('The genre was not found, try ones more ')
+
+    elif start=='n':
+        next=input('Search by actor: ')
+        if next=='y':
+            actors=set()
+            for actor_list in CAST.values():
+                for actor in actor_list:
+                    actors.add(actor)
+            print(f'Available actors: {list(actors)}')
+            while True:
+                a=input("Enter actor: ")
+                movies= []
+                for mov, actor_list in CAST.items():
+                    if a in actor_list:
+                        movies.append(mov)
+                if movies:
+                    print(f'Available movies: {movies} with {a}')
+                    while True:
+                        m=input('Enter movie: ')
+                        if m in movies:
+                            print(f"Movie to watch: {m}. Starring: {a}")
+                            break
+                        else:
+                            print('The movie was not found, try ones more')
+                    break
+                else:
+                    print('The actor was not found, try ones more')
         else:
-            print('The actor was not found, try ones more')
+            print('I cannot help you, see you next time')
     else:
-        print('I cannot help you, see you next time')
-else:
-    print('Wrong input, try y or n')
+        print('Wrong input, try y or n')
