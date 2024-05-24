@@ -1,4 +1,4 @@
-def search(source, source_name):
+def search(source: list, source_name):
     print(f'Available {source_name}(s): {source}')
     source_input = input(f"Enter {source_name}: ")
     while source_input not in source:
@@ -16,6 +16,18 @@ def movies_by_actors(cast):
             else:
                 actors[actor] = [movie]
     return actors
+
+
+def prepare(source: dict, user_age):
+    new_source = {}
+    forbidden_movies = []
+    for ages in PG.keys():
+        if user_age < ages:
+            for movies in PG[ages]:
+                forbidden_movies.append(movies)
+    for genre_or_actor, movie_list in source.items():
+        new_source[genre_or_actor] = [movie for movie in movie_list if movie not in forbidden_movies]
+    return new_source
 
 
 if __name__ == '__main__':
@@ -43,18 +55,32 @@ if __name__ == '__main__':
         16: {'Vanilla Sky'}
     }
 
+    age = input("Enter your age: ")
+    while isinstance(age, int) is False:
+        try:
+            age = int(age)
+        except ValueError:
+            age = input("Incorrect input. Try again: ")
     genre_search = input("Search by Genre: ")
     if genre_search == "y":
+        GENRES = prepare(GENRES, age)
         chosen_genre = search(list(GENRES.keys()), "Genre")
-        chosen_movie = search(GENRES[chosen_genre], "Movie")
-        print(f"Movie to watch: {chosen_movie}. Genre: {chosen_genre}")
+        if len(GENRES[chosen_genre]) > 1:
+            chosen_movie = search(GENRES[chosen_genre], "Movie")
+            print(f"Movie to watch: {chosen_movie}. Genre: {chosen_genre}")
+        else:
+            print(f"No movies to watch in genre: {chosen_genre}")
     elif genre_search == "n":
         actor_search = input("Search by Actor: ")
         if actor_search == "y":
             ACTORS = movies_by_actors(CAST)
+            ACTORS = prepare(ACTORS, age)
             chosen_actor = search(list(ACTORS.keys()), "Actor")
-            chosen_movie = search(ACTORS[chosen_actor], "Movie")
-            print(f"Movie to watch: {chosen_movie}. Starring: {chosen_actor}")
+            if len(ACTORS[chosen_actor]) > 1:
+                chosen_movie = search(ACTORS[chosen_actor], "Movie")
+                print(f"Movie to watch: {chosen_movie}. Starring: {chosen_actor}")
+            else:
+                print(f"No movies to watch starring: {chosen_actor}")
         else:
             print("Input not supported. Exiting")
     else:
