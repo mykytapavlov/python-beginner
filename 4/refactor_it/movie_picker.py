@@ -9,7 +9,7 @@ def search(source, source_name):
 
 def movies_by_actors(cast):
     actors = {}
-    for movie, movie_cast in CAST.items():
+    for movie, movie_cast in cast.items():
         for actor in movie_cast:
             if actor in actors:
                 actors[actor].append(movie)
@@ -38,9 +38,14 @@ if __name__ == '__main__':
         'Mission Impossible': ['Tom Cruise', 'Jeremy Renner']
     }
 
+    PG = {
+        13: {'Meet the Parents', 'Anger Management', 'Mummy', 'Meet Joe Black', 'Mission Impossible'},
+        16: {'Vanilla Sky'}
+    }
+
     genre_search = input("Search by Genre: ")
     if genre_search == "y":
-        chosen_genre = search(list(GENRES.keys()),"Genre")
+        chosen_genre = search(list(GENRES.keys()), "Genre")
         chosen_movie = search(GENRES[chosen_genre], "Movie")
         print(f"Movie to watch: {chosen_movie}. Genre: {chosen_genre}")
     elif genre_search == "n":
