@@ -23,13 +23,13 @@ def movies_by_actors(cast):
 
 def prepare(source: dict, user_age):
     new_source = {}
-    forbidden_movies = []
+    forbidden_items = []
     for pg_age in PG:
         if user_age < pg_age:
-            for movie in PG[pg_age]:
-                forbidden_movies.append(movie)
+            for item in PG[pg_age]:
+                forbidden_items.append(item)
     for key, value in source.items():
-        new_source[key] = [movie for movie in value if movie not in forbidden_movies]
+        new_source[key] = [item for item in value if item not in forbidden_items]
     return new_source
 
 
