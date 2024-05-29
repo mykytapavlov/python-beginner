@@ -1,32 +1,35 @@
 def search(source: list, source_name):
-    print(f'Available {source_name}(s): {source}')
-    source_input = input(f"Enter {source_name}: ")
-    while source_input not in source:
-        print(f"{source_name} {source_input} not found. Please try again.")
+    if source:
+        print(f'Available {source_name}(s): {source}')
         source_input = input(f"Enter {source_name}: ")
+        while source_input not in source:
+            print(f"{source_name} {source_input} not found. Please try again.")
+            source_input = input(f"Enter {source_name}: ")
+    else:
+        source_input = "Nothing"
     return source_input
 
 
 def movies_by_actors(cast):
-    actors = {}
+    new_actors = {}
     for movie, movie_cast in cast.items():
         for actor in movie_cast:
-            if actor in actors:
-                actors[actor].append(movie)
+            if actor in new_actors:
+                new_actors[actor].append(movie)
             else:
-                actors[actor] = [movie]
-    return actors
+                new_actors[actor] = [movie]
+    return new_actors
 
 
 def prepare(source: dict, user_age):
     new_source = {}
     forbidden_movies = []
-    for ages in PG.keys():
-        if user_age < ages:
-            for movies in PG[ages]:
-                forbidden_movies.append(movies)
-    for genre_or_actor, movie_list in source.items():
-        new_source[genre_or_actor] = [movie for movie in movie_list if movie not in forbidden_movies]
+    for pg_age in PG:
+        if user_age < pg_age:
+            for movie in PG[pg_age]:
+                forbidden_movies.append(movie)
+    for key, value in source.items():
+        new_source[key] = [movie for movie in value if movie not in forbidden_movies]
     return new_source
 
 
@@ -63,24 +66,18 @@ if __name__ == '__main__':
             age = input("Incorrect input. Try again: ")
     genre_search = input("Search by Genre: ")
     if genre_search == "y":
-        GENRES = prepare(GENRES, age)
-        chosen_genre = search(list(GENRES.keys()), "Genre")
-        if len(GENRES[chosen_genre]) > 1:
-            chosen_movie = search(GENRES[chosen_genre], "Movie")
-            print(f"Movie to watch: {chosen_movie}. Genre: {chosen_genre}")
-        else:
-            print(f"No movies to watch in genre: {chosen_genre}")
+        genres = prepare(GENRES, age)
+        chosen_genre = search(list(genres.keys()), "Genre")
+        chosen_movie = search(genres[chosen_genre], "Movie")
+        print(f"Movie to watch: {chosen_movie}. Genre: {chosen_genre}")
     elif genre_search == "n":
         actor_search = input("Search by Actor: ")
         if actor_search == "y":
-            ACTORS = movies_by_actors(CAST)
-            ACTORS = prepare(ACTORS, age)
-            chosen_actor = search(list(ACTORS.keys()), "Actor")
-            if len(ACTORS[chosen_actor]) > 1:
-                chosen_movie = search(ACTORS[chosen_actor], "Movie")
-                print(f"Movie to watch: {chosen_movie}. Starring: {chosen_actor}")
-            else:
-                print(f"No movies to watch starring: {chosen_actor}")
+            actors = movies_by_actors(CAST)
+            actors = prepare(actors, age)
+            chosen_actor = search(list(actors.keys()), "Actor")
+            chosen_movie = search(actors[chosen_actor], "Movie")
+            print(f"Movie to watch: {chosen_movie}. Starring: {chosen_actor}")
         else:
             print("Input not supported. Exiting")
     else:
