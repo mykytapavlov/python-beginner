@@ -6,6 +6,10 @@ GENRES = {
     'thriller': ['Vanilla Sky'],
     'action': ['Mission Impossible']
 }
+PG = {
+    13: {'Meet the Parents', 'Anger Management', 'Mummy', 'Meet Joe Black', 'Mission Impossible'},
+    16: {'Vanilla Sky'}
+}
 ACTORS = {
     'Robert De Niro': ['Meet the Parents'],
     'Ben Stiller': ['Meet the Parents'],
@@ -30,6 +34,14 @@ CAST = {
 }
 
 
+def filter_movies_by_age(movies_list, age_movies_mapping, users_age):
+    filtered_movies = []
+    for movie in movies_list:
+        for age, movies in age_movies_mapping.items():
+            if users_age < age:
+                movies_list
+
+
 def search(source, source_name):
     print(f'Available {source_name}: {source}')
 
@@ -52,6 +64,25 @@ def find_movie_and_actor(place_to_look_in):
     return new_list
 
 
+while True:
+    users_age = input('Enter your age: ')
+    try:
+        users_age = int(users_age)
+        break
+    except ValueError:
+        print("You must enter an integer.")
+
+
+filter_movies_by_age(GENRES, PG, users_age)
+
+
+# filtered_movies = {}
+# for movies in GENRES.values():
+#     for movie in movies:
+#         for age, movies in PG.items():
+#             if users_age < age:
+
+
 users_choice_for_genre = input('Search by Genre y/n: ')
 if users_choice_for_genre == 'y':
     # 'search' function prints out available Genres
@@ -60,6 +91,7 @@ if users_choice_for_genre == 'y':
     users_genre_input = correct_user_input(GENRES.keys(), 'Genre')
 
     # if user's input exists in available genres, we display all movies for the entered genre
+
     for genre in GENRES:
         if users_genre_input in genre:
             # 'search' function prints out available Movies
@@ -70,7 +102,6 @@ if users_choice_for_genre == 'y':
             for movie in GENRES[genre]:
                 if users_movie_input in movie:
                     print(f'Movie to watch: {movie}. Genre: {users_genre_input}.')
-
 
 if users_choice_for_genre == 'n':
     users_choice_for_actor = input('Search by Actor y/n: ')
