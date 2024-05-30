@@ -30,75 +30,6 @@ CAST = {
 }
 
 
-# # task 17
-#
-# def search(source, source_name):
-#     print(f'Available {source_name} : {source}')
-#
-#
-# users_choice_for_genre = input('Search by Genre y/n: ')
-# if users_choice_for_genre == 'y':
-#     search(list(GENRES.keys()), 'Genres')
-#
-#     users_genre_input = input('Enter genre: ')
-#     # when user's genre input doesn't match any of genres in GENRES, it goes back and asks to provide a genre again
-#
-#     while users_genre_input not in GENRES.keys():
-#         print(f'Genre {users_genre_input} not found. Please try again.')
-#         users_genre_input = input('Enter genre: ')
-#     # if user's input is the same as we have in GENRES, we move forward
-#     if users_genre_input in GENRES.keys():
-#         # and display all movies for the entered genre
-#         for genre in GENRES:
-#             if users_genre_input in genre:
-#                 search(GENRES[genre], 'Movies')
-#                 users_movie_input = input('Enter movie: ')
-#                 # when user's movie input doesn't match any of movie from the list, it goes back and asks to provide a movie again
-#                 while users_movie_input not in GENRES[genre]:
-#                     print(f'Movie {users_movie_input} not found. Please try again.')
-#                     users_movie_input = input('Enter movie: ')
-#                 else:
-#                     # if movie exists in the list, we move on and display it as a movie to watch with name and genre. Program ends
-#                     for movie in GENRES[genre]:
-#                         if users_movie_input in movie:
-#                             print(f'Movie to watch: {movie}. Genre: {users_genre_input}.')
-#
-# if users_choice_for_genre == 'n':
-#     users_choice_for_actor = input('Search by Actor y/n: ')
-#     # when user selects yes for actors we display all available actors
-#     if users_choice_for_actor == 'y':
-#         available_actors = []
-#         # And actors shouldn't repeat
-#         for actors in CAST.values():
-#             for actor in actors:
-#                 if actor not in available_actors:
-#                     available_actors.append(actor)
-#         search(available_actors, 'Actors')
-#
-#         users_actor_input = input('Enter actor: ')
-#         # when user's actor input doesn't match any of actors in CAST, it goes back and asks to provide an actor again
-#         while users_actor_input not in available_actors:
-#             print('Actor', users_actor_input, 'not found. Please try again.')
-#             users_actor_input = input('Enter actor: ')
-#         if users_actor_input in available_actors:
-#             # if user's actor input is the same as we have in CAST, we move forward and display all available movies for the chosen actor
-#             available_movies = []
-#             for movie, actor in CAST.items():
-#                 if users_actor_input in actor:
-#                     available_movies.append(movie)
-#             print(f'Available Movies: {available_movies} with {users_actor_input}')
-#             enter_movie_input = input('Enter movie: ')
-#             # when user's movie input doesn't match any of movie from the list, it goes back and asks to provide a movie again
-#             while enter_movie_input not in available_movies:
-#                 print(f'Movie {enter_movie_input} not found. Please try again.')
-#                 enter_movie_input = input('Enter movie: ')
-#
-#             else:
-#                 # if movie exists in the list, we move on and display it as a movie to watch with name and actor. Program ends
-#                 print(f'Movie to watch: {enter_movie_input}. Starring: {users_actor_input}')
-#         if users_choice_for_actor == 'n':
-#             print('Good Bye')
-
 def search(source, source_name):
     print(f'Available {source_name}: {source}')
 
@@ -112,52 +43,55 @@ def correct_user_input(place_to_compare, search_type):
         return user_input
 
 
+def find_movie_and_actor(place_to_look_in):
+    new_list = []
+    for item_in_list_one in place_to_look_in:
+        for under_item in item_in_list_one:
+            if under_item not in new_list:
+                new_list.append(under_item)
+    return new_list
+
+
 users_choice_for_genre = input('Search by Genre y/n: ')
 if users_choice_for_genre == 'y':
+    # 'search' function prints out available Genres
     search(list(GENRES.keys()), 'Genres')
-
+    # 'correct_user_input' function takes user's input for genres and compares it with available genres. Repeats if doesn't match
     users_genre_input = correct_user_input(GENRES.keys(), 'Genre')
 
-    # if user's input is the same as we have in GENRES, we move forward
-    # and display all movies for the entered genre
+    # if user's input exists in available genres, we display all movies for the entered genre
     for genre in GENRES:
         if users_genre_input in genre:
+            # 'search' function prints out available Movies
             search(GENRES[genre], 'Movies')
+            # 'correct_user_input' function takes user's input for movies and compares it with available movies. Repeats if doesn't match
             users_movie_input = correct_user_input(GENRES[genre], 'Movie')
-            if users_movie_input in GENRES[genre]:
-                # if movie exists in the list, we move on and display it as a movie to watch with name and genre. Program ends
-                for movie in GENRES[genre]:
-                    if users_movie_input in movie:
-                        print(f'Movie to watch: {movie}. Genre: {users_genre_input}.')
+            # if user's input exists in available movies, we display it as a movie to watch with name and genre. Program ends
+            for movie in GENRES[genre]:
+                if users_movie_input in movie:
+                    print(f'Movie to watch: {movie}. Genre: {users_genre_input}.')
+
 
 if users_choice_for_genre == 'n':
     users_choice_for_actor = input('Search by Actor y/n: ')
-    # when user selects yes for actors we display all available actors
     if users_choice_for_actor == 'y':
-        available_actors = []
-        # And actors shouldn't repeat
-        for actors in CAST.values():
-            for actor in actors:
-                if actor not in available_actors:
-                    available_actors.append(actor)
+        # 'find_movie_and_actor' function creates a list with non-repeatable Actors
+        available_actors = find_movie_and_actor(CAST.values())
+        # 'search' function prints out available Actors
         search(available_actors, 'Actors')
-
+        # 'correct_user_input' function takes user's input for actors and compares it with available actors. Repeats if doesn't match
         users_actor_input = correct_user_input(available_actors, 'Actor')
-
-        # when user's actor input doesn't match any of actors in CAST, it goes back and asks to provide an actor again
         if users_actor_input in available_actors:
-            # if user's actor input is the same as we have in CAST, we move forward and display all available movies for the chosen actor
+            # if user's actor input exists in available actors, we display all available movies for the chosen actor
             available_movies = []
             for movie, actor in CAST.items():
                 if users_actor_input in actor:
                     available_movies.append(movie)
             print(f'Available Movies: {available_movies} with {users_actor_input}')
-
+            # 'correct_user_input' function takes user's input for a movies and compares it with available movies for chosen actor. Repeats if doesn't match
             enter_movie_input = correct_user_input(available_movies, 'Movie')
-            # when user's movie input doesn't match any of movie from the list, it goes back and asks to provide a movie again
-
+            # if movie exists in available movies for chosen actor, we display it as a movie to watch with name and actor. Program ends
             if enter_movie_input in available_movies:
-                # if movie exists in the list, we move on and display it as a movie to watch with name and actor. Program ends
                 print(f'Movie to watch: {enter_movie_input}. Starring: {users_actor_input}')
-        if users_choice_for_actor == 'n':
-            print('Good Bye')
+    if users_choice_for_actor == 'n':
+        print('Good Bye')
