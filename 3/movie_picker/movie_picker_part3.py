@@ -17,8 +17,8 @@ CAST = {
 }
 
 while True:
-    search_genre = input("Search by Genre? (y/n): ")
-    if search_genre == 'y' or search_genre == 'Y':
+    user_input = input("Search by Genre? (y/n): ")
+    if user_input == 'y' or user_input == 'Y':
         while True:
             print("Available Genres:", list(GENRES.keys()))
             genre = input("Enter genre: ")
@@ -34,9 +34,9 @@ while True:
                 break
             else:
                 print("Genre", genre, "not found. Please try again.")
-    elif search_genre == 'n' or search_genre == 'N':
-        search_actor = input("Search by Actor? (y/n): ")
-        if search_actor == 'y' or search_actor == 'Y':
+    elif user_input == 'n' or user_input == 'N':
+        user_input = input("Search by Actor? (y/n): ")
+        if user_input == 'y' or user_input == 'Y':
             available_actors = set(actor for movie in CAST for actor in CAST[movie])
             while True:
                 print("Available Actors:", list(available_actors))
@@ -58,3 +58,4 @@ while True:
             print("Invalid input.")
     else:
         print("Invalid input.")
+
