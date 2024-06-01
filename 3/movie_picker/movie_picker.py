@@ -34,6 +34,19 @@ PG = {
 }
 
 
+def filter_cast(movies_list, age_movies_mapping, users_age):
+    filtered_movies_for_cast = []
+    new_cast_dict = {}
+    for age, b_movies in age_movies_mapping.items():
+        for b_movie in b_movies:
+            if users_age >= age:
+                filtered_movies_for_cast.append(b_movie)
+    for cast_movie, cast_actors in movies_list.items():
+        if cast_movie in filtered_movies_for_cast:
+            new_cast_dict.update({cast_movie: cast_actors})
+    return new_cast_dict
+
+
 def filter_movies_by_age(movies_list, age_movies_mapping, users_age):
     filtered_movies = []
     new_list = {}
@@ -84,8 +97,7 @@ while True:
 
 new_genres = filter_movies_by_age(GENRES, PG, users_age)
 new_actors = filter_movies_by_age(ACTORS, PG, users_age)
-print(new_genres)
-print(new_actors)
+new_cast = filter_cast(CAST, PG, users_age)
 
 users_choice_for_genre = input('Search by Genre y/n: ')
 if users_choice_for_genre == 'y':
@@ -95,7 +107,6 @@ if users_choice_for_genre == 'y':
     users_genre_input = correct_user_input(GENRES.keys(), 'Genre')
 
     # if user's input exists in available genres, we display all movies for the entered genre
-
     for genre in new_genres:
         if users_genre_input in genre:
             # 'search' function prints out available Movies
@@ -111,7 +122,7 @@ if users_choice_for_genre == 'n':
     users_choice_for_actor = input('Search by Actor y/n: ')
     if users_choice_for_actor == 'y':
         # 'find_movie_and_actor' function creates a list with non-repeatable Actors
-        available_actors = find_movie_and_actor(CAST.values())
+        available_actors = find_movie_and_actor(new_cast.values())
         # 'search' function prints out available Actors
         search(available_actors, 'Actors')
         # 'correct_user_input' function takes user's input for actors and compares it with available actors. Repeats if doesn't match
@@ -119,7 +130,7 @@ if users_choice_for_genre == 'n':
         if users_actor_input in available_actors:
             # if user's actor input exists in available actors, we display all available movies for the chosen actor
             available_movies = []
-            for movie, actor in CAST.items():
+            for movie, actor in new_cast.items():
                 if users_actor_input in actor:
                     available_movies.append(movie)
             print(f'Available Movies: {available_movies} with {users_actor_input}')
