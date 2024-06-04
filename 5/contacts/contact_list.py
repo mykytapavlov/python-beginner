@@ -21,17 +21,27 @@ class ContactList:
 
     # Read this section: https://realpython.com/python-iterators-iterables/#what-is-the-python-iterator-protocol
 
+    def __iter__(self):
+        return self
 
-if __name__ == '__main__':
-    contact_list = ContactList()
-    mike = Contact(name='Mike', email='mike@example.com', age=30)
+    def __next__(self):
+        if self.index < len(self.storage):
+            item = self.storage[self.index]
+            self.index += 1
+            return item
+        else:
+            raise StopIteration
 
-    # should append only instances of Contact class
-    contact_list.append(mike)
+    def __str__(self):
+        output = '\n' + 10 * '*' + '\nContact List:\n'
+        for item in self:
+            output = output + str(item) + '\n'
+        output = output + 'Total amount of contacts: ' + str(self.index) + '\nEnd of Contact List\n' + 10 * '*' + '\n'
+        self.index = 0
+        return output
 
-    # should print list of contacts nicely as well as total amount
-    print(contact_list)
-
-    # should print each contact nicely
-    for contact in contact_list:
-        print(contact)
+    def append(self, new_contact):
+        if isinstance(new_contact, Contact):
+            self.storage.append(new_contact)
+        else:
+            raise ValueError('Invalid Contact Format')
