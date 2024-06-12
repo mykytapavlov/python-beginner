@@ -44,6 +44,7 @@ def filter_cast(movies_list, age_movies_mapping, users_age):
     for cast_movie, cast_actors in movies_list.items():
         if cast_movie in filtered_movies_for_cast:
             new_cast_dict.update({cast_movie: cast_actors})
+            #new_cast_dict[cast_movie] = cast_actors
     return new_cast_dict
 
 
@@ -57,11 +58,15 @@ def filter_movies_by_age(movies_list, age_movies_mapping, users_age):
     for c_genre, c_movies in movies_list.items():
         for c_movie in c_movies:
             if c_movie in filtered_movies:
-                new_list.update({c_genre: c_movies})
-    for d_genre, d_movies in new_list.items():
-        for d_movie in d_movies:
-            if d_movie not in filtered_movies:
-                new_list[d_genre].remove(d_movie)
+                #new_list.update({c_genre: c_movies})
+                if c_genre in new_list:
+                    new_list[c_genre].append(c_movie)
+                else:
+                    new_list[c_genre] = [c_movie]
+    # for d_genre, d_movies in new_list.items():
+    #     for d_movie in d_movies:
+    #         if d_movie not in filtered_movies:
+    #             new_list[d_genre].remove(d_movie)
     return new_list
 
 
