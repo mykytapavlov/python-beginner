@@ -30,14 +30,14 @@ class ContactList:
             self.index += 1
             return item
         else:
+            self.index = 0
             raise StopIteration
 
     def __str__(self):
         output = '\n' + 10 * '*' + '\nContact List:\n'
         for item in self:
             output = output + str(item) + '\n'
-        output = output + 'Total amount of contacts: ' + str(self.index) + '\nEnd of Contact List\n' + 10 * '*' + '\n'
-        self.index = 0
+        output = output + 'Total amount of contacts: ' + str(len(self.storage)) + '\nEnd of Contact List\n' + 10 * '*' + '\n'
         return output
 
     def append(self, new_contact):
