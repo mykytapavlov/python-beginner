@@ -1,26 +1,47 @@
+from time import sleep
 from board import Board
 from snake import Snake
 from apple import Apple
 
 
 class Game:
-    def __init__(self):
-        self.board = Board(width=20, height=20)
+    def __init__(self, width=20, height=20):
+        self.width = width
+        self.height = height
+        self.board = Board(self.width, self.height)
         self.snake = Snake()
         self.apple = Apple()
 
+    def play(self):
+        self.apple = Apple(position=(1, 2))
+        self.snake.eat(self.apple)
+        self.render()
+        sleep(2)
+
+        self.apple = Apple(position=(2, 2))
+        self.snake.eat(self.apple)
+        self.render()
+        sleep(2)
+
+        self.apple = Apple(position=(2, 3))
+        self.snake.eat(self.apple)
+        self.render()
+        sleep(2)
+
+        self.snake.move(position=(2,4))
+        self.render()
+        sleep(2)
+
+        self.apple = Apple(position=(3, 4))
+        self.render()
+        sleep(2)
+
+    def clear(self):
+        self.board = Board(self.width, self.height)
+
     def render(self):
-        apple = Apple(position=(1, 2))
-        self.snake.eat(apple)
-
-        apple = Apple(position=(2, 2))
-        self.snake.eat(apple)
-
-        apple = Apple(position=(2, 3))
-        self.snake.eat(apple)
-
+        self.clear()
         # set apple
-        apple = Apple(position=(3,4))
         i, j = self.apple.position
         self.board.board[i][j] = self.apple.symbol
 
