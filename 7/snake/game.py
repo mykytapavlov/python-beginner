@@ -16,30 +16,20 @@ class Game:
         self.apple = Apple(position=(1, 2))
         self.snake.eat(self.apple)
         self.render()
-        print(self.snake.choices())
-        sleep(2)
 
         self.apple = Apple(position=(2, 2))
         self.snake.eat(self.apple)
         self.render()
-        print(self.snake.choices())
-        sleep(2)
 
         self.apple = Apple(position=(2, 3))
         self.snake.eat(self.apple)
         self.render()
-        print(self.snake.choices())
-        sleep(2)
 
         self.snake.move(position=(2,4))
         self.render()
-        print(self.snake.choices())
-        sleep(2)
 
         self.apple = Apple(position=(3, 4))
         self.render()
-        print(self.snake.choices())
-        sleep(2)
 
     def clear(self):
         # clear console output
@@ -64,3 +54,5 @@ class Game:
         self.board.board[head_i][head_j] = self.snake.symbols['head']
         # print board
         self.board.show()
+        # sleep
+        sleep(2)
