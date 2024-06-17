@@ -10,7 +10,7 @@ class GameOverError(Exception):
 
 
 class Game:
-    def __init__(self, width=20, height=20):
+    def __init__(self, width=6, height=6):
         self.width = width
         self.height = height
         self.board = Board(self.width, self.height)
@@ -33,10 +33,9 @@ class Game:
             raise GameOverError('No places for apple!')
 
     def play(self):
-        game_cycles = 50
         try:
             self.render()  # initial render of board, snake and apple
-            while game_cycles > 0:  # start our game
+            while True:  # start our game
                 snake_i, snake_j = self.snake.body[-1]  # remember last position of snake's head
                 border_positions = set()  # create a set with all border positions
                 for j in range(0, self.width):  # add positions of the border for the first and last rows
@@ -69,7 +68,6 @@ class Game:
                 # then it means it can simply move on next valid position:
                 self.snake.move(next_move)
                 self.render()
-                game_cycles -= 1
         except GameOverError as e:
             print(f'Game Over! {e}')
 
