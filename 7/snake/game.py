@@ -33,7 +33,7 @@ class Game:
             raise GameOverError('No places for apple!')
 
     def play(self):
-        game_cycles = 10
+        game_cycles = 50
         try:
             self.render()  # initial render of board, snake and apple
             while game_cycles > 0:  # start our game
@@ -47,9 +47,15 @@ class Game:
                     border_positions.add((i, self.width - 1))
                 available_moves = self.snake.choices()
                 available_moves -= border_positions  # filter out border positions from possible snake moves
-                try:
-                    next_move = random.choice(list(available_moves))
-                except IndexError: # there is no possible move for snake
+                if available_moves:  # get best move
+                    min_distance = (self.height**2 + self.width**2)**0.5
+                    next_move = None
+                    for move in available_moves:
+                        current_distance = self.board.distance(self.apple.position, move)
+                        if current_distance < min_distance:
+                            min_distance = current_distance
+                            next_move = move
+                else:  # there is no possible move for snake
                     self.snake.move((snake_i, snake_j + 1))  # just do one move forward for snake
                     self.render()  # render last move
                     raise GameOverError('No moves for snake!')  # end the game (snake does not have next valid move)
