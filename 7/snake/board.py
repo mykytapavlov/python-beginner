@@ -7,17 +7,21 @@ class Board:
 
     def init_board(self):
         board = []
-        # first row
         border_row = [self.border] * self.width
+        # add first row
         board.append(border_row)
-        # second to penultimate row
-        for i in range(self.height):
+        # add second to penultimate row
+        for i in range(1, self.height - 1):
+            # first symbol in row: border
             row = [self.border]
-            for j in range(1,self.width-1):
+            # second to penultimate symbol in row: space
+            for j in range(1, self.width - 1):
                 row.append(' ')
+            # last symbol in row: border
             row.append(self.border)
+            # add row to board
             board.append(row)
-        # last row
+        # add last row
         board.append(border_row)
         return board
 
