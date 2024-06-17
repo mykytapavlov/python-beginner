@@ -22,34 +22,50 @@ class Game:
         last_position = self.apple.position
         # create a set with all available spaces
         available = set()
-        for i in range(1, self.board.height - 1):
-            for j in range(1, self.board.width - 1):
+        for i in range(1, self.height - 1):
+            for j in range(1, self.width - 1):
                 available.add((i,j))
-        available = available.difference(set(self.snake.body)).difference(set(last_position))
-        if available:
-            # if set of available space is not empty: select random element form it
+        available -= set(self.snake.body) | set(last_position)
+        try:
+            # if set of available space is not empty: select random element from it
             self.apple = Apple(position=(random.choice(list(available))))
-        else:
+        except IndexError:
             raise GameOverError('No places for apple!')
 
     def play(self):
-        self.apple = Apple(position=(1, 2))
-        self.snake.eat(self.apple)
-        self.render()
-
-        self.apple = Apple(position=(2, 2))
-        self.snake.eat(self.apple)
-        self.render()
-
-        self.apple = Apple(position=(2, 3))
-        self.snake.eat(self.apple)
-        self.render()
-
-        self.snake.move(position=(2,4))
-        self.render()
-
-        self.init_apple()
-        self.render()
+        game_cycles = 10
+        try:
+            self.render()  # initial render of board, snake and apple
+            while game_cycles > 0:  # start our game
+                snake_i, snake_j = self.snake.body[-1]  # remember last position of snake's head
+                border_positions = set()  # create a set with all border positions
+                for j in range(0, self.width):  # add positions of the border for the first and last rows
+                    border_positions.add((0, j))
+                    border_positions.add((self.height - 1, j))
+                for i in range(1, self.height - 1):  # add positions of the border for the intermediate rows
+                    border_positions.add((i, 0))
+                    border_positions.add((i, self.width - 1))
+                available_moves = self.snake.choices()
+                available_moves -= border_positions  # filter out border positions from possible snake moves
+                try:
+                    next_move = random.choice(list(available_moves))
+                except IndexError: # there is no possible move for snake
+                    self.snake.move((snake_i, snake_j + 1))  # just do one move forward for snake
+                    self.render()  # render last move
+                    raise GameOverError('No moves for snake!')  # end the game (snake does not have next valid move)
+                if next_move == self.apple.position:
+                    self.snake.eat(self.apple)  # eat apple
+                    self.render()  # render this action
+                    self.init_apple()  # init new apple
+                    self.render()  # render it on board
+                    continue  # go to next game cycle
+                # if game is not over, and snake did not eat the apple in current game cycle,
+                # then it means it can simply move on next valid position:
+                self.snake.move(next_move)
+                self.render()
+                game_cycles -= 1
+        except GameOverError as e:
+            print(f'Game Over! {e}')
 
     def clear(self):
         # clear console output

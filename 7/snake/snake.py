@@ -28,5 +28,5 @@ class Snake:
         positions.add((i - 1, j))
         positions.add((i + 1, j))
         # filter out snake's body
-        positions = positions.difference(set(self.body))
+        positions -= set(self.body)
         return positions
