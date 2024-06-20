@@ -62,6 +62,17 @@ class Board:
         board.append(border_row)
         return board
 
+    def available_positions(self) -> set:
+        # create a set with all available spaces
+        available = set()
+        for i in range(1, self.height - 1):
+            for j in range(1, self.width - 1):
+                available.add((i, j))
+        return available
+
     def show(self):
         for row in self.board:
             print(' '.join([self.colored(symbol) for symbol in row]))
+
+    def __getitem__(self, index: int) -> list:
+        return self.board[index]
