@@ -1,7 +1,7 @@
 class Snake:
     def __init__(self, symbol='o', position=(1, 1)):
         self.symbol = symbol
-        self.head_symbol = '%'  # Change head symbol to %
+        self.head_symbol = '%'  
         self.body = [position]
 
     def eat(self, position: tuple):
