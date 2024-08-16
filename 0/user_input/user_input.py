@@ -1,2 +1,5 @@
-if __name__ == '__main__':
-    print('Task 2. User`s input.')
+#if __name__ == '__main__':
+#    print('new input')
+
+word = input('Enter something: ')
+print (word)
