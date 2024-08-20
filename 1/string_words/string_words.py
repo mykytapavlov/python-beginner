@@ -1,2 +1,4 @@
-if __name__ == '__main__':
-    print('Task 6. String words')
+text = 'Create python program which accepts text and prints words to console'
+words = text.split()
+
+print(words)
