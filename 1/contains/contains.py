@@ -1,2 +1,7 @@
-if __name__ == '__main__':
-    print('Task 9. Contains?')
+word = 'collaboration'
+if "a" in word:
+    print(word)
+else:
+    print(word[::-1])
+
+
