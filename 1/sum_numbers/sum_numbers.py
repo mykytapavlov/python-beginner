@@ -1,2 +1,4 @@
 if __name__ == '__main__':
-    print('Task 3. Sum numbers.')
+    x = 2.5
+    y = 4
+    print(x + y)
