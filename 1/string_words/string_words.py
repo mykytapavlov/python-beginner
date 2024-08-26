@@ -1,2 +1,8 @@
 if __name__ == '__main__':
-    print('Task 6. String words')
+
+    input_text = 'So much changes every day that I cannot follow them'
+    res = input_text.split()
+
+    print('Words of this text are:')
+    for i in res:
+        print (i)
