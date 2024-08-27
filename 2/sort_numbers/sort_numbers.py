@@ -1,2 +1,6 @@
 if __name__ == '__main__':
-    print('Task 10. Sort numbers')
+
+    x = [3, 2, 1, 4, 5,  2]
+    x.sort()
+
+    print(x)
