@@ -1,6 +1,6 @@
 if __name__ == '__main__':
 
-    s = 'whatever you want, whatever you need'
+    s = input('Please neter some phrase: ')
     m = len (s)
 
     print('String size is', m, 'symbols')
