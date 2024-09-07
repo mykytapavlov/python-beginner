@@ -1,6 +1,6 @@
 if __name__ == '__main__':
 
-    x = [3, 2, 1, 4, 5,  2]
-    x.sort()
+    my_list = [3, 2, 1, 4, 5, 2]
+    my_list.sort()
 
-    print(x)
+    print('Your list is sorted: ', my_list)
