@@ -1,9 +1,10 @@
 if __name__ == '__main__':
 
-    x = 12
-    y = 8
-    m = (y > x)
-    if m is True:
+    x = input('Please enter number X: ')
+    x = int(x)
+    y = input('Please enter number Y: ')
+    y = int(y)
+    if y > x:
         print('Y is greater than X')
     else:
         print ('Y is less than X')
